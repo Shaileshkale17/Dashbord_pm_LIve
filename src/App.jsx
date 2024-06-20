@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import TopNavber from "./components/TopNavber/TopNavber";
 import Navber from "./components/Navber/Navber";
+import Table from "./components/Table/Table";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +16,7 @@ function App() {
       </div>
       <div className="w-[85%]">
         <TopNavber />
+        <Table />
       </div>
     </div>
   );

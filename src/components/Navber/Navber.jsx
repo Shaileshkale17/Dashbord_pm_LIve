@@ -16,16 +16,14 @@ import Settings1 from "../../assets/Settings - Copy.svg";
 import Settings2 from "../../assets/Settings.svg";
 import Logout1 from "../../assets/Logout Copy.svg";
 import Logout2 from "../../assets/logout.svg";
-const Navber = ({
-  clickOverview = false,
-  DirectVisitors = false,
-  ChannelVisitors = false,
-  ChannelPartners = false,
-  Projects = false,
-  Team = false,
-  Settings = false,
-  Logout = false,
-}) => {
+
+const Navber = () => {
+  const [activeItem, setActiveItem] = useState("");
+
+  const handleItemClick = (item) => {
+    setActiveItem(item);
+  };
+
   return (
     <div className="bg-[#FFFFFF] h-screen text-white flex flex-col justify-around gap-16 lg:gap-0 items-center ">
       <div className="flex flex-col gap-5 W-[70%] md::w-auto">
@@ -36,69 +34,81 @@ const Navber = ({
         />
         <ul className="flex flex-col gap-4">
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
-              clickOverview === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}>
-            {clickOverview === true ? (
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+              activeItem === "Overview" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
+            }`}
+            onClick={() => handleItemClick("Overview")}>
+            {activeItem === "Overview" ? (
               <img src={navicon2} alt="" className="w-4 lg:w-auto" />
             ) : (
               <img src={navicon1} alt="" />
-            )}{" "}
+            )}
             Overview
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
-              DirectVisitors === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}>
-            {DirectVisitors === true ? (
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+              activeItem === "DirectVisitors"
+                ? "bg-[#3D2314] text-[#FFFFFF]"
+                : ""
+            }`}
+            onClick={() => handleItemClick("DirectVisitors")}>
+            {activeItem === "DirectVisitors" ? (
               <img src={carbon_customer1} alt="" />
             ) : (
               <img src={carbon_customer2} alt="" />
-            )}{" "}
+            )}
             Direct Visitors
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
-              ChannelVisitors === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}>
-            {ChannelVisitors === true ? (
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+              activeItem === "ChannelVisitors"
+                ? "bg-[#3D2314] text-[#FFFFFF]"
+                : ""
+            }`}
+            onClick={() => handleItemClick("ChannelVisitors")}>
+            {activeItem === "ChannelVisitors" ? (
               <img src={material1} alt="" />
             ) : (
               <img src={material2} alt="" />
-            )}{" "}
+            )}
             Channel Visitors
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
-              ChannelPartners === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}>
-            {ChannelPartners === true ? (
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+              activeItem === "ChannelPartners"
+                ? "bg-[#3D2314] text-[#FFFFFF]"
+                : ""
+            }`}
+            onClick={() => handleItemClick("ChannelPartners")}>
+            {activeItem === "ChannelPartners" ? (
               <img src={ChannelPartners1} alt="" />
             ) : (
               <img src={ChannelPartners2} alt="" />
-            )}{" "}
+            )}
             Channel Partners
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
-              Projects === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}>
-            {Projects === true ? (
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+              activeItem === "Projects" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
+            }`}
+            onClick={() => handleItemClick("Projects")}>
+            {activeItem === "Projects" ? (
               <img src={Projects1} alt="" />
             ) : (
               <img src={Projects2} alt="" />
-            )}{" "}
+            )}
             Projects
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
-              Team === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}>
-            {Team === true ? (
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+              activeItem === "Team" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
+            }`}
+            onClick={() => handleItemClick("Team")}>
+            {activeItem === "Team" ? (
               <img src={Team1} alt="Team" />
             ) : (
               <img src={Team2} alt="Team" />
-            )}{" "}
+            )}
             Team
           </li>
         </ul>
@@ -106,25 +116,13 @@ const Navber = ({
       <div>
         <ul className="flex flex-col gap-4">
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
-              Settings === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}>
-            {Settings === true ? (
-              <img src={Settings1} alt="Settings" />
-            ) : (
-              <img src={Settings2} alt="Settings" />
-            )}
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] `}>
+            <img src={Settings2} alt="Settings" />
             Settings
           </li>
           <li
-            className={` text-[red] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-[s] lg:text-lg font-[Manrope] ${
-              Logout === true ? "bg-[#3D2314] " : ""
-            }`}>
-            {Logout === true ? (
-              <img src={Logout1} alt="Settings" />
-            ) : (
-              <img src={Logout2} alt="Settings" />
-            )}
+            className={`text-[red] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-[s] lg:text-lg font-[Manrope] `}>
+            <img src={Logout2} alt="Logout" />
             Logout
           </li>
         </ul>
