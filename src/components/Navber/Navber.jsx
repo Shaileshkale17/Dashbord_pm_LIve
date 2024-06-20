@@ -12,6 +12,10 @@ import Projects1 from "../../assets/ph_buildings-bold - Copy.svg";
 import Projects2 from "../../assets/ph_buildings-bold.svg";
 import Team1 from "../../assets/ri_team-line - Copy.svg";
 import Team2 from "../../assets/ri_team-line.svg";
+import Settings1 from "../../assets/Settings - Copy.svg";
+import Settings2 from "../../assets/Settings.svg";
+import Logout1 from "../../assets/Logout Copy.svg";
+import Logout2 from "../../assets/logout.svg";
 const Navber = ({
   clickOverview = false,
   DirectVisitors = false,
@@ -19,9 +23,11 @@ const Navber = ({
   ChannelPartners = false,
   Projects = false,
   Team = false,
+  Settings = false,
+  Logout = false,
 }) => {
   return (
-    <div className="bg-[#FFFFFF] h-screen text-white flex flex-col pt-5 gap-9 items-center justify-center">
+    <div className="bg-[#FFFFFF] h-screen text-white flex flex-col justify-around  gap-28 items-center ">
       <div className="flex flex-col gap-5 ">
         <img src={rofImage} alt="ROF" />
         <ul className="flex flex-col gap-4">
@@ -90,6 +96,32 @@ const Navber = ({
               <img src={Team2} alt="Team" />
             )}{" "}
             Team
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul className="flex flex-col gap-4">
+          <li
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+              Settings === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
+            }`}>
+            {Settings === true ? (
+              <img src={Settings1} alt="Settings" />
+            ) : (
+              <img src={Settings2} alt="Settings" />
+            )}
+            Settings
+          </li>
+          <li
+            className={` text-[red] font-medium flex flex-row gap-3 w-48 p-2 ${
+              Logout === true ? "bg-[#3D2314] " : ""
+            }`}>
+            {Logout === true ? (
+              <img src={Logout1} alt="Settings" />
+            ) : (
+              <img src={Logout2} alt="Settings" />
+            )}
+            Logout
           </li>
         </ul>
       </div>
