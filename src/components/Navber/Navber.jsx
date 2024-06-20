@@ -27,23 +27,27 @@ const Navber = ({
   Logout = false,
 }) => {
   return (
-    <div className="bg-[#FFFFFF] h-screen text-white flex flex-col justify-around  gap-28 items-center ">
-      <div className="flex flex-col gap-5 ">
-        <img src={rofImage} alt="ROF" />
+    <div className="bg-[#FFFFFF] h-screen text-white flex flex-col justify-around gap-16 lg:gap-0 items-center ">
+      <div className="flex flex-col gap-5 W-[70%] md::w-auto">
+        <img
+          src={rofImage}
+          alt="ROF"
+          className="sm:w-[70%] mt-8 lg:mt-0 xl:w-full"
+        />
         <ul className="flex flex-col gap-4">
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
               clickOverview === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}>
             {clickOverview === true ? (
-              <img src={navicon2} alt="" />
+              <img src={navicon2} alt="" className="w-4 lg:w-auto" />
             ) : (
               <img src={navicon1} alt="" />
             )}{" "}
             Overview
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
               DirectVisitors === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}>
             {DirectVisitors === true ? (
@@ -54,7 +58,7 @@ const Navber = ({
             Direct Visitors
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
               ChannelVisitors === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}>
             {ChannelVisitors === true ? (
@@ -65,7 +69,7 @@ const Navber = ({
             Channel Visitors
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
               ChannelPartners === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}>
             {ChannelPartners === true ? (
@@ -76,7 +80,7 @@ const Navber = ({
             Channel Partners
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
               Projects === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}>
             {Projects === true ? (
@@ -87,7 +91,7 @@ const Navber = ({
             Projects
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
               Team === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}>
             {Team === true ? (
@@ -102,7 +106,7 @@ const Navber = ({
       <div>
         <ul className="flex flex-col gap-4">
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-sm lg:text-lg font-[Manrope] ${
               Settings === true ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}>
             {Settings === true ? (
@@ -113,7 +117,7 @@ const Navber = ({
             Settings
           </li>
           <li
-            className={` text-[red] font-medium flex flex-row gap-3 w-48 p-2 ${
+            className={` text-[red] font-medium flex flex-row gap-3 w-28 lg:w-48 p-2 text-[s] lg:text-lg font-[Manrope] ${
               Logout === true ? "bg-[#3D2314] " : ""
             }`}>
             {Logout === true ? (
