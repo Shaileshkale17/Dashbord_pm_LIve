@@ -32,7 +32,7 @@ const Navber = () => {
           <img
             src={rofImage}
             alt="ROF"
-            className="sm:w-[70%] mt-8 lg:mt-0 xl:w-full "
+            className="sm:w-[70%] mt-8 lg:mt-0 xl:w-40 xl:h-40 "
           />
         </Link>
         <ul className="flex flex-col gap-4">
