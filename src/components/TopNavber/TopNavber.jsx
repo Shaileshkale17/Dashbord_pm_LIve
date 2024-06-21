@@ -18,7 +18,7 @@ const TopNavber = () => {
         <img
           src={userImg}
           alt="Userimg"
-          className="w-8 rounded-full mr-12"
+          className="w-8 rounded-full mr-12 cursor-pointer"
           onClick={() => clickfun()}
         />
       </div>
@@ -27,9 +27,13 @@ const TopNavber = () => {
           click === true ? "" : "hidden"
         } `}>
         <ul className="flex flex-col gap-2">
-          <li className="font-[Manrope] font-medium">Go to Settings</li>
-          <li className="font-[Manrope] font-medium">Profile</li>
-          <li className="font-[Manrope] font-medium text-[#F13737]">Logout</li>
+          <li className="font-[Manrope] cursor-pointer font-medium">
+            Go to Settings
+          </li>
+          <li className="font-[Manrope] cursor-pointer font-medium">Profile</li>
+          <li className="font-[Manrope] cursor-pointer font-medium text-[#F13737]">
+            Logout
+          </li>
         </ul>
       </div>
     </div>
