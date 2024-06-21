@@ -18,7 +18,7 @@ import Logout1 from "../../assets/Logout Copy.svg";
 import Logout2 from "../../assets/logout.svg";
 
 const Navber = () => {
-  const [activeItem, setActiveItem] = useState("");
+  const [activeItem, setActiveItem] = useState("Overview");
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -30,11 +30,11 @@ const Navber = () => {
         <img
           src={rofImage}
           alt="ROF"
-          className="sm:w-[70%] mt-8 lg:mt-0 xl:w-full"
+          className="sm:w-[70%] mt-8 lg:mt-0 xl:w-full "
         />
         <ul className="flex flex-col gap-4">
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 cursor-pointer lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
               activeItem === "Overview" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}
             onClick={() => handleItemClick("Overview")}>
@@ -46,7 +46,7 @@ const Navber = () => {
             Overview
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+            className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
               activeItem === "DirectVisitors"
                 ? "bg-[#3D2314] text-[#FFFFFF]"
                 : ""
@@ -60,7 +60,7 @@ const Navber = () => {
             Direct Visitors
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+            className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
               activeItem === "ChannelVisitors"
                 ? "bg-[#3D2314] text-[#FFFFFF]"
                 : ""
@@ -74,7 +74,7 @@ const Navber = () => {
             Channel Visitors
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+            className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
               activeItem === "ChannelPartners"
                 ? "bg-[#3D2314] text-[#FFFFFF]"
                 : ""
@@ -88,7 +88,7 @@ const Navber = () => {
             Channel Partners
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+            className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
               activeItem === "Projects" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}
             onClick={() => handleItemClick("Projects")}>
@@ -100,7 +100,7 @@ const Navber = () => {
             Projects
           </li>
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+            className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
               activeItem === "Team" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
             }`}
             onClick={() => handleItemClick("Team")}>
@@ -116,12 +116,12 @@ const Navber = () => {
       <div>
         <ul className="flex flex-col gap-4">
           <li
-            className={`text-[#3D2314] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] `}>
+            className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] `}>
             <img src={Settings2} alt="Settings" />
             Settings
           </li>
           <li
-            className={`text-[red] font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-[s] lg:text-lg font-[Manrope] `}>
+            className={`text-[red] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-[s] lg:text-lg font-[Manrope] `}>
             <img src={Logout2} alt="Logout" />
             Logout
           </li>
