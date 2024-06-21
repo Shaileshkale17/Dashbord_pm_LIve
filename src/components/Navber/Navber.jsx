@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import rofImage from "../../assets/ROf Image 1.svg";
 import navicon1 from "../../assets/Vector (2).svg";
 import navicon2 from "../../assets/Vector (2)-2.svg";
@@ -16,14 +16,43 @@ import Settings1 from "../../assets/Settings - Copy.svg";
 import Settings2 from "../../assets/Settings.svg";
 import Logout1 from "../../assets/Logout Copy.svg";
 import Logout2 from "../../assets/logout.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navber = () => {
-  const [activeItem, setActiveItem] = useState("Overview");
+  const location = useLocation();
+  const locationPath = location.pathname;
+  const [activeItem, setActiveItem] = useState("");
 
   const handleItemClick = (item) => {
     setActiveItem(item);
   };
+
+  useEffect(() => {
+    switch (locationPath) {
+      case "/":
+        setActiveItem("Overview");
+        break;
+      case "/Direct_Visitors":
+        setActiveItem("Overview");
+        break;
+      case "/Channel_Visitors":
+        setActiveItem("ChannelVisitors");
+        break;
+      case "/Channel_Partners":
+        setActiveItem("ChannelPartners");
+        break;
+      case "/Project":
+        setActiveItem("Project");
+        break;
+      case "/Team":
+        setActiveItem("Team");
+        break;
+
+      default:
+        setActiveItem("DirectVisitors");
+        break;
+    }
+  }, []);
 
   return (
     <div className="bg-[#FFFFFF] h-screen text-white flex flex-col justify-around gap-16 lg:gap-0 items-center ">
@@ -32,7 +61,7 @@ const Navber = () => {
           <img
             src={rofImage}
             alt="ROF"
-            className="sm:w-[70%] mt-8 lg:mt-0 xl:w-full "
+            className="sm:w-[70%] mt-8 lg:mt-0 xl:w-40 xl:h-40 "
           />
         </Link>
         <ul className="flex flex-col gap-4">
@@ -112,18 +141,20 @@ const Navber = () => {
               Projects
             </li>
           </Link>
-          <li
-            className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
-              activeItem === "Team" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-            }`}
-            onClick={() => handleItemClick("Team")}>
-            {activeItem === "Team" ? (
-              <img src={Team1} alt="Team" />
-            ) : (
-              <img src={Team2} alt="Team" />
-            )}
-            Team
-          </li>
+          <Link to="/Team">
+            <li
+              className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-28 lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+                activeItem === "Team" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
+              }`}
+              onClick={() => handleItemClick("Team")}>
+              {activeItem === "Team" ? (
+                <img src={Team1} alt="Team" />
+              ) : (
+                <img src={Team2} alt="Team" />
+              )}
+              Team
+            </li>
+          </Link>
         </ul>
       </div>
       <div>

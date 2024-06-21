@@ -18,6 +18,7 @@ const router = createBrowserRouter([
       { path: "/Channel_Visitors", element: <Table /> },
       { path: "/Channel_Partners", element: <Table /> },
       { path: "/Project", element: <Table /> },
+      { path: "/Team", element: <Table /> },
     ],
   },
 ]);
