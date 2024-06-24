@@ -15,7 +15,7 @@ function App() {
       <div className="w-auto h-screen ">
         <Navber />
       </div>
-      <div className="w-[85%]">
+      <div className="w-full">
         <TopNavber />
         <Outlet />
       </div>
