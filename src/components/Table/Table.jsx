@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const Table = () => {
   const visitors = Array(10).fill({
@@ -14,11 +14,22 @@ const Table = () => {
 
   return (
     <div className="p-4 overflow-x-auto">
+
+   
+        <h1 className="font-bold mb-10">Home <span className="font-medium">Direct Visitors</span></h1>
+    
+
+      <div className="flex items-center justify-center ">
+        <input className=" mb-16 w-[60%] py-2 rounded-full px-10 outline-none border-2 border-gray-600 " type="text" name="" id="" placeholder="Search" />
+      </div>
+
+
+
       <table className="min-w-full bg-white">
         <thead>
-          <tr>
+          <tr className="text-[15px] text-left">
             <th className="py-2 px-4 border-b">Date</th>
-            <th className="py-2 px-4 border-b">Customer ID</th>
+            <th className="py-2 px-4 border-b">CustomerID</th>
             <th className="py-2 px-4 border-b">Full Name</th>
             <th className="py-2 px-4 border-b">Email ID</th>
             <th className="py-2 px-4 border-b">Mobile No</th>
@@ -30,7 +41,7 @@ const Table = () => {
         </thead>
         <tbody>
           {visitors.map((visitor, index) => (
-            <tr key={index}>
+            <tr className="text-[14px]" key={index}>
               <td className="py-2 px-4 border-b">{visitor.date}</td>
               <td className="py-2 px-4 border-b">{visitor.customerId}</td>
               <td className="py-2 px-4 border-b">{visitor.fullName}</td>
