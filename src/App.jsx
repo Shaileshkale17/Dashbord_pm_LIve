@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="flex flex-row bg-[#F7F3E8]">
-      <div className="w-[15%] h-screen ">
+      <div className="w-auto h-screen ">
         <Navber />
       </div>
       <div className="w-[85%]">
