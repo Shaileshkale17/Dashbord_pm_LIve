@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 
-const Overview = () => {
+const BreadCrumbs = () => {
   const location = useLocation();
   const locationPath = location.pathname;
   const [activeItem, setActiveItem] = useState("");
@@ -36,9 +35,11 @@ const Overview = () => {
   console.log(activeItem);
   return (
     <div>
-      <BreadCrumbs />
+      <h1 className="font-bold mt-8">
+        Home / <span className="font-medium">{activeItem}</span>
+      </h1>
     </div>
   );
 };
 
-export default Overview;
+export default BreadCrumbs;
