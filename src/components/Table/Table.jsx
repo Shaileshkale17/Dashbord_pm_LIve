@@ -2,38 +2,65 @@ import { useEffect, useState } from "react";
 import Searchsvg from "../../assets/material-symbols_search.svg";
 import axios from "axios";
 import { format } from "date-fns";
+
 const Table = () => {
   const [valueinput, setvalueinput] = useState("");
   const [data, setdata] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
 
   const deletedAt = async (id) => {
-    const res = await axios.delete(
+    await axios.delete(
       `https://prodictivity-management-tool2.vercel.app/api/customers/delete/${id}`
     );
+    fetchData(); // Refresh data after deletion
+  };
+
+  const fetchData = async () => {
+    const res = await axios.get(
+      `https://prodictivity-management-tool2.vercel.app/api/customers/fetch-all`
+    );
+    setdata(res.data);
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(
-        `https://prodictivity-management-tool2.vercel.app/api/customers/fetch-all`
-      );
-      setdata(res.data);
-    };
     fetchData();
-  }, [deletedAt]);
+  }, []);
 
   // Data Time
   const DateupdatedAt = (DateupdatedAt) => {
-    const formattedDate = format(DateupdatedAt, "dd MMM | hh:mm a");
+    const formattedDate = format(new Date(DateupdatedAt), "dd MMM | hh:mm a");
     return formattedDate;
   };
 
-  // Define the desired format
+  // Pagination Logic
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = data
+    .filter(({ name }) => name.toLowerCase().includes(valueinput.toLowerCase()))
+    .slice(indexOfFirstRecord, indexOfLastRecord);
+  const totalPages = Math.ceil(
+    data.filter(({ name }) =>
+      name.toLowerCase().includes(valueinput.toLowerCase())
+    ).length / recordsPerPage
+  );
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <>
       {data.length === 0 ? (
-        "Loding..."
+        "Loading..."
       ) : (
         <div className="p-4 overflow-x-auto flex flex-col gap-9">
           <h1 className="font-bold ">
@@ -72,48 +99,59 @@ const Table = () => {
               </tr>
             </thead>
             <tbody>
-              {data
-                .filter(({ name }) => {
-                  return name.toLowerCase().includes(valueinput.toLowerCase());
-                })
-                .map((visitor, index) => (
-                  <tr className="text-[9px] lg:text-[14px]" key={index}>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {DateupdatedAt(visitor.updatedAt)}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {visitor.customerId}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {visitor.name}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {visitor.email}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {visitor.mobile}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {visitor.projectName}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {visitor.team}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      {visitor.attendant}
-                    </td>
-                    <td className="py-2 px-2 lg:px-4 border-b">
-                      <button className="text-blue-600 mr-2">Edit</button>
-                      <button
-                        className="text-red-600"
-                        onClick={() => deletedAt(visitor._id)}>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+              {currentRecords.map((visitor, index) => (
+                <tr className="text-[9px] lg:text-[14px]" key={index}>
+                  <td className="py-2 px-2 lg:px-4 border-b">
+                    {DateupdatedAt(visitor.updatedAt)}
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b">
+                    {visitor.customerId}
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b">{visitor.name}</td>
+                  <td className="py-2 px-2 lg:px-4 border-b">
+                    {visitor.email}
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b">
+                    {visitor.mobile}
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b">
+                    {visitor.projectName}
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b">{visitor.team}</td>
+                  <td className="py-2 px-2 lg:px-4 border-b">
+                    {visitor.attendantName}
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b">
+                    <button className="text-blue-600 mr-2">Edit</button>
+                    <button
+                      className="text-red-600"
+                      onClick={() => deletedAt(visitor._id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
+          <div className="flex justify-end items-center mt-4 gap-4">
+            <span>
+              Page {currentPage}-{totalPages} of {totalPages}
+            </span>
+            <div>
+              <button
+                onClick={prevPage}
+                disabled={currentPage === 1}
+                className="py-2 px-4 text-[#632E04] rounded">
+                &lt;
+              </button>
+              <button
+                onClick={nextPage}
+                disabled={currentPage === totalPages}
+                className="py-2 px-4 text-[#632E04] rounded">
+                &gt;
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </>
