@@ -133,7 +133,7 @@ const Table = () => {
               ))}
             </tbody>
           </table>
-          <div className="flex justify-end items-center mt-4 gap-4">
+          <div className="flex justify-end items-center  gap-4">
             <span>
               Page {currentPage}-{totalPages} of {totalPages}
             </span>
