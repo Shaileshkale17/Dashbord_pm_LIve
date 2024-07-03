@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Searchsvg from "../../assets/material-symbols_search.svg";
 import axios from "axios";
 import { format } from "date-fns";
+import Loding from "../Loding/Loding";
 
 const Table = () => {
   const [valueinput, setvalueinput] = useState("");
@@ -60,7 +61,7 @@ const Table = () => {
   return (
     <>
       {data.length === 0 ? (
-        "Loading..."
+        <Loding />
       ) : (
         <div className="p-4 overflow-x-auto flex flex-col gap-9">
           <h1 className="font-bold ">

@@ -2,7 +2,17 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "pulse-opactity": "pulse-opactity 2.5s infinite",
+      },
+      keyframes: {
+        "pulse-opactity": {
+          "0% 100%": { opacity: 0 },
+          "50%": { opacity: 0.75 },
+        },
+      },
+    },
   },
   plugins: [],
 };
