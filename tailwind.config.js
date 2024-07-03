@@ -8,7 +8,8 @@ export default {
       },
       keyframes: {
         "pulse-opactity": {
-          "0% 100%": { opacity: 0 },
+          "0% 100%": { opacity: 1 },
+          "25%": { opacity: 0.25 },
           "50%": { opacity: 0.75 },
         },
       },
