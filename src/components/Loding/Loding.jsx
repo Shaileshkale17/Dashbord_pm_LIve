@@ -6,8 +6,6 @@ import ROF4 from "../../assets/Property 1=Variant4logo.svg";
 import Icon from "./Icon";
 
 const Loading = () => {
-  const images = ["", "0.75", "0.5", "0.25"];
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <svg
