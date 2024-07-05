@@ -55,7 +55,7 @@ const Navber = () => {
   }, []);
 
   return (
-    <div className="bg-[#FFFFFF] h-screen text-white flex flex-col justify-between   ">
+    <div className="right-shadow bg-[#FFFFFF] h-screen text-white flex flex-col justify-between p-4 shadow-md  ">
       <div className="flex flex-col gap-5 W-[70%] md::w-auto">
         <Link to="/">
           <img

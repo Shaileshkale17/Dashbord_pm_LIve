@@ -7,7 +7,7 @@ import pencil from "../../assets/pencil.png";
 import deleteIcon from "../../assets/deleteIcon.png";
 import arrow_forward_ios from "../../assets/arrow_forward_ios.png"
 
-const Table = () => {
+const Table1 = () => {
   const [valueinput, setvalueinput] = useState("");
   const [data, setdata] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -70,7 +70,7 @@ const Table = () => {
  ">
   {/* bg: #F7F3E8 */}
           <h1 className="font-bold flex items-center gap-1">
-            Home<img src={arrow_forward_ios}/><span className="font-medium">Direct Visitors</span>
+            Home<img src={arrow_forward_ios}/><span className="font-medium">Channel Visitors</span>
           </h1>
 
           <div className="flex flex-row items-center justify-start">
@@ -96,10 +96,11 @@ const Table = () => {
                 <th className="py-2 px-2 lg:px-4 border-b">Date</th>
                 <th className="py-2 px-2 lg:px-4 border-b text-center">Response Time</th>
                 <th className="py-2 px-2 lg:px-4 border-b text-center">Meeting Duration</th>
+                <th className="py-2 px-2 lg:px-4 border-b text-center">Channel Partner ID</th>
+                <th className="py-2 px-2 lg:px-4 border-b text-center">Channel Name</th>
+                <th className="py-2 px-2 lg:px-4 border-b text-center">Channel Partner Name</th>
                 <th className="py-2 px-2 lg:px-4 border-b text-center">Customer Name</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Customer ID</th>
-                <th className="py-2 px-2 lg:px-4 border-b">Mobile No</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Email ID</th>
+                <th className="py-2 px-2 lg:px-4 border-b">Last 4 Digit</th>
                 <th className="py-2 px-2 lg:px-4 border-b">Project</th>
                 <th className="py-2 px-2 lg:px-4 border-b text-center">Attendant</th>
                 <th className="py-2 px-2 lg:px-4 border-b"></th>
@@ -115,26 +116,38 @@ const Table = () => {
                     {/* {visitor.customerId} */}
                     00:00
                   </td>
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">00:00 
-                    {/* {visitor.name}   */}
-                    
-                     </td>
                   <td className="py-2 px-2 lg:px-4 border-b text-center">
-                  {visitor.name}
-                    
+                    00:00
                   </td>
                   <td className="py-2 px-2 lg:px-4 border-b text-center">
-                  {visitor.customerId}
+                  {/* {visitor.name} */}
                   
-                  </td>
-                  <td className="py-2 px-2 lg:px-4 border-b">
-                  {visitor.mobile}
+                  CHROF0001
                     
                   </td>
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">{visitor.email}</td>
-                  <td className="py-2 px-2 lg:px-4 border-b">{visitor.projectName}</td>
+                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                  {/* {visitor.name} */}
+                  Rainbow Oversies pvt ltd
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                  {/* {visitor.customerId} */}
+                  Sameer Chaudhary
+                  
+                    
+                  </td>
+                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                    Anand Jaiswal
+                    </td>
+                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                    {/* {visitor.mobileS} */}1594
+                    </td>
 
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">{visitor.attendantName}</td>
+                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                    {visitor.projectName}
+                    </td>
+                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                    {visitor.attendantName}
+                    </td>
                   
                   <td className="py-2 px-2 lg:px-4 border-b flex gap-2">
                     <img
@@ -180,7 +193,7 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default Table1;
 
 
 
