@@ -12,9 +12,17 @@ const TopNavber = () => {
     }
   };
   return (
-    <div
-      className={`bottom-shadow w-full h-[3.688rem] lg:h-[50px] bg-white bg-opacity-50  flex flex-row justify-end px-5 gap-5 items-center font-[Manrope] font-medium relative shadow-b-lg shadow-Black-1000`}>
-      <div className="font-[Manrope] "><b>Welcome! {title} </b> </div> 
+    <div  style={{boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)',paddingRight:'0px'
+    }}  
+      className={`TNav border-0 bottom-shadow w-full h-[3.688rem] lg:h-[50px] bg-white bg-opacity-50  flex flex-row justify-end px-5 gap-5 items-center font-[Manrope] font-medium relative shadow-b-lg shadow-Black-1000` }>
+      <div style={{
+        fontFamily: 'Manrope',
+        fontSize: '20px',
+        fontWeight: '500',
+        lineHeight: '27.32px',
+
+        
+      }}>Welcome! {title} </div> 
        {/* bg-[#FFFFFF] */}
       <div>
         <img
@@ -24,16 +32,16 @@ const TopNavber = () => {
           onClick={() => clickfun()}
         />
       </div>
-      <div
-        className={`absolute right-7 top-14 bg-white p-6 ${
+      <div style={{boxShadow:' 0px 0px 4px 0px #00000040', padding:'6px 14px'}}
+        className={`absolute right-7 top-14 bg-white p-4 ${
           click === true ? "" : "hidden"
         } `}>
-        <ul className="flex flex-col gap-2 ">
-          <li className="font-[Manrope] cursor-pointer font-medium  ">
+        <ul className="flex flex-col gap-1 ">
+          <li style={{ fontFamily: 'Manrope',fontSize:'20px'}} className="font-[Manrope] cursor-pointer font-medium  ">
             Go to Settings
           </li>
-          <li className="font-[Manrope] cursor-pointer font-medium">Profile</li>
-          <li className="font-[Manrope] cursor-pointer font-medium text-[#F13737]">
+          <li style={{ fontFamily: 'Manrope',fontSize:'20px'}} className="font-[Manrope] cursor-pointer font-medium">Profile</li>
+          <li style={{ fontFamily: 'Manrope',fontSize:'20px'}} className="font-[Manrope] cursor-pointer font-medium text-[#F13737]">
             Logout
           </li>
         </ul>

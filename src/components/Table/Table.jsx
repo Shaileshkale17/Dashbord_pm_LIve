@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
+import { LuPencilLine } from "react-icons/lu";
 import Searchsvg from "../../assets/material-symbols_search.svg";
+import { PiNotePencilBold } from "react-icons/pi";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { IoIosArrowForward } from "react-icons/io";
 import axios from "axios";
 import { format } from "date-fns";
 import Loding from "../Loding/Loding";
 import pencil from "../../assets/pencil.png";
 import deleteIcon from "../../assets/deleteIcon.png";
 import arrow_forward_ios from "../../assets/arrow_forward_ios.png"
+import "../Home.css";
+import { Link } from "react-router-dom";
 
 const Table = () => {
   const [valueinput, setvalueinput] = useState("");
@@ -37,124 +43,252 @@ const Table = () => {
     return formattedDate;
   };
 
-  // Pagination Logic
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = data
-    .filter(({ name }) => name.toLowerCase().includes(valueinput.toLowerCase()))
-    .slice(indexOfFirstRecord, indexOfLastRecord);
-  const totalPages = Math.ceil(
-    data.filter(({ name }) =>
-      name.toLowerCase().includes(valueinput.toLowerCase())
-    ).length / recordsPerPage
-  );
+  // // Pagination Logic
+  // const indexOfLastRecord = currentPage * recordsPerPage;
+  // const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  // const currentRecords = data
+  //   .filter(({ name }) => name.toLowerCase().includes(valueinput.toLowerCase()))
+  //   .slice(indexOfFirstRecord, indexOfLastRecord);
+  // const totalPages = Math.ceil(
+  //   data.filter(({ name }) =>
+  //     name.toLowerCase().includes(valueinput.toLowerCase())
+  //   ).length / recordsPerPage
+  // );
 
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  // const nextPage = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
 
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  // const prevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage(currentPage - 1);
+  //   }
+  // };
 
   return (
-    <>
+    <div className="arrowss" >
       {data.length === 0 ? (
         <Loding />
       ) : (
-        <div className="p-4 overflow-x-auto flex flex-col gap-9 bg-custom-bg;
+        <div style={{gap:'10px'}} className="Tab3 p-4 overflow-x-auto flex flex-col gap-9 bg-custom-bg h-screen;
  ">
   {/* bg: #F7F3E8 */}
-          <h1 className="font-bold flex items-center gap-1">
-            Home<img src={arrow_forward_ios}/><span className="font-medium">Direct Visitors</span>
+  <div style={{gap:'20px', paddingLeft:'0px'}} className="p-4 overflow-x-auto flex flex-col gap-9 bg-custom-bg;
+ ">
+  <h1 className="font-bold flex items-center gap-1" style={{fontFamily: 'Poppins', fontSize:'24px', fontWeight:'500'
+}}>
+            Home<IoIosArrowForward style={{color:'#1C1B1F'}}/><span style={{fontFamily: 'Poppins', fontWeight:'400', fontSize:'24px'
+}} className="font-medium">Direct Visitors</span>
           </h1>
 
-          <div className="flex flex-row items-center justify-start">
+          <div className="flex flex-row items-center justify-start" >
             <div className="flex justify-start items-center w-[50%] lg:block relative lg:w-[36rem] rounded-full  mr-96 ">
               <input
                 className="w-full py-2 px-12 rounded-full "
-                style={{ border: "2px solid #3D2314" }}
+                style={{ border: "1px solid #3D2314",boxShadow:' 0px 0px 4px 0px #00000040'
+                }}
                 type="text"
                 value={valueinput}
                 onChange={(e) => setvalueinput(e.target.value)}
                 placeholder="Search"
               />
               <img
+              style={{top:'0.6rem'}}
                 src={Searchsvg}
                 alt="Search"
-                className="absolute top-2 left-4"
+                className="absolute  left-4"
               />
             </div>
           </div>
-          <table className="min-w-full bg-white">
-            <thead>
+    </div>
+        <div className="outer-wrapper">
+          <div className="table-wrapper">
+          <table className="min-w-full bg-white" style={{boxShadow:' 0px 0px 4px 0px #00000040'}}  >
+            <thead >
               <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]" >
-                <th className="py-2 px-2 lg:px-4 border-b">Date</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Response Time</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Meeting Duration</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Customer Name</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Customer ID</th>
-                <th className="py-2 px-2 lg:px-4 border-b">Mobile No</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Email ID</th>
-                <th className="py-2 px-2 lg:px-4 border-b">Project</th>
-                <th className="py-2 px-2 lg:px-4 border-b text-center">Attendant</th>
-                <th className="py-2 px-2 lg:px-4 border-b"></th>
+                <th style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                  textAlign: 'left',
+                  paddingLeft:'7px',
+                  width:'115px',
+                  padding:'5px',
+                 
+                  
+                }}>Date</th>
+                <th className="text-center" style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'center',
+                 padding:'5px'
+
+                  
+                  
+                }}>Response Time</th>
+                <th className="border-b text-center" style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'center',
+                 padding:'5px'
+                  
+                  
+                }}>Meeting Duration</th>
+                <th className="border-b text-center"style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'center',
+                  
+                  
+                }}>Customer Name</th>
+                <th className="border-b text-center"style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'center',
+                 padding:'5px'
+
+                  
+                  
+                }}>Customer ID</th>
+                <th className="border-b"style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'center',
+                 padding:'5px'
+
+                  
+                }}>Mobile No</th>
+                <th className="border-b text-center"style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                  textAlign: 'center',
+                  padding:'5px'
+
+                  
+                  
+                }}>Email ID</th>
+                <th className="border-b"style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'center',
+                 padding:'5px'
+
+                  
+                  
+                }}>Project</th>
+                <th className="border-b text-center"style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'center',
+                 width:'100px',
+                 padding:'5px'
+
+                  
+                  
+                }}>Attendant</th>
+                <th className="border-b"style={{
+                  fontFamily: 'Manrope',
+                  fontSize: '12px',
+                  fontWeight:'500',
+                  lineHeight: '16.39px',
+                 textAlign: 'left',
+                 padding:'5px'
+                
+                  
+                  
+                }}>Actions</th>
+                {/* <th className="py-2 px-2 lg:px-6 border-b"> </th> */}
               </tr>
             </thead>
+           
             <tbody>
-              {currentRecords.map((visitor, index) => (
-                <tr className="text-[9px] lg:text-[14px]" key={index}>
-                  <td className="py-2 px-2 lg:px-4 border-b ">
+              {data.map((visitor, index) => (
+                <tr style={{paddingLeft:'5px'}}  className="py-1 border-b text-[9px] lg:text-[14px]" key={index}>
+                  <td style={{paddingLeft:'5px'}}>
                     {DateupdatedAt(visitor.updatedAt)}
                   </td>
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                  <td className="py-1 border-b text-center">
                     {/* {visitor.customerId} */}
                     00:00
                   </td>
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">00:00 
+                  <td className="py-1 border-b text-center">00:00 
                     {/* {visitor.name}   */}
                     
                      </td>
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">
+                  <td className="py-1 border-b text-center">
                   {visitor.name}
                     
                   </td>
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">
-                  {visitor.customerId}
+                  <td className="py-1 border-b text-center">
+                    <Link  style={{
+                    fontFamily: 'Manrope',
+                    fontSize: '14px',
+                    fontWeight: '700',
+                    lineHeight: '19.12px',
+                    textAlign: 'left',
+                    color: '#000AFF',
+                    textDecoration:'underline'
+
+                    
+                  }} >
+                    {visitor.customerId}
+
+                    </Link>
                   
                   </td>
-                  <td className="py-2 px-2 lg:px-4 border-b">
+                  <td className="py-1 border-b text-center">
                   {visitor.mobile}
                     
                   </td>
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">{visitor.email}</td>
-                  <td className="py-2 px-2 lg:px-4 border-b">{visitor.projectName}</td>
+                  <td className="py-1 border-b text-center">{visitor.email}</td>
+                  <td className="py-1 border-b text-center">{visitor.projectName}</td>
 
-                  <td className="py-2 px-2 lg:px-4 border-b text-center">{visitor.attendantName}</td>
+                  <td className="py-1 border-b text-center text-center">{visitor.attendantName}</td>
                   
-                  <td className="py-2 px-2 lg:px-4 border-b flex gap-2">
-                    <img
+                  <td className="py-1 border-b flex gap-2">
+                    {/* <img
                       src={pencil}
                       alt="Edit"
                       className="cursor-pointer"
-                      onClick={() => handleEdit(visitor._id)}
-                    />
+                      
+                    /> */}
+
+<PiNotePencilBold onClick={() => handleEdit(visitor._id)} style={{cursor:'pointer', fontSize:'18px',color:'#632E04' }}/>
                     <br/>
-                    <img
+                    {/* <img
                       src={deleteIcon}
                       alt="Delete"
                       className="cursor-pointer"
-                      onClick={() => deletedAt(visitor._id)}
-                    />
+                     
+                    /> */}
+
+<RiDeleteBin6Line  onClick={() => deletedAt(visitor._id)} style={{cursor:'pointer', fontSize:'18px', color:'#930000'}}/>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          </div>
+          </div>
                 {/* <div className="flex justify-end items-center  gap-4">
                   <span>
                    Page {currentPage}-{totalPages} of {totalPages}
@@ -176,7 +310,7 @@ const Table = () => {
           </div>
         // </div>
       )}
-    </>
+    </div>
   );
 };
 
