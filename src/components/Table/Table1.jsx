@@ -20,14 +20,14 @@ const Table1 = () => {
 
   const deletedAt = async (id) => {
     await axios.delete(
-      `http://project-rof.vercel.app/api/partners/delete/${id}`
+      `https://project-rof.vercel.app/api/partners/delete/${id}`
     );
     fetchData(); // Refresh data after deletion
   };
 
   const fetchData = async () => {
     const res = await axios.get(
-      `http://project-rof.vercel.app/api/partners/fetch-all`
+      `https://project-rof.vercel.app/api/partners/fetch-all`
     );
     setdata(res.data);
   };
