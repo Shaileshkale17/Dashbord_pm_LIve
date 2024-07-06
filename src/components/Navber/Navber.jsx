@@ -55,19 +55,26 @@ const Navber = () => {
   }, []);
 
   return (
-    <div className="right-shadow bg-[#FFFFFF] h-screen text-white flex flex-col justify-between p-4 shadow-md  ">
-      <div className="flex flex-col gap-5 W-[70%] md::w-auto">
-        <Link to="/">
+    <div style={{zIndex:'+1', boxShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)'}} className="right-shadow border-0 bg-[#FFFFFF] h-screen text-white flex flex-col justify-between p-4 shadow-md  pt-0">
+      <div className="flex flex-col  W-[70%] md::w-auto" style={{gap:'10px'}}>
+        <Link to="/" style={{
+          textAlign:'-webkit-center'
+        }}>
           <img
             src={rofImage}
             alt="ROF"
-            className="sm:w-[70%] mt-2 lg:mt-0 xl:w-40 xl:h-40 "
+            className="sm:w-[60%] mt-2 lg:mt-0 xl:w-40 xl:h-40 "
           />
         </Link>
-        <ul className="flex flex-col gap-4">
+        <ul className="flex flex-col " style={{gap:'10px'}}>
           <Link to="/">
-            <li
-              className={`text-[#3D2314] font-medium flex flex-row gap-3  cursor-pointer w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
+            <li style={{fontFamily: 'Manrope',
+fontSize: '20px',
+fontWeight: '500',
+lineHeight: '27.32px',
+textAlign: 'left',
+}}
+              className={`text-[#3D2314] font-medium flex flex-row gap-3  cursor-pointer w-auto  lg:w-52 p-2 lg:text-lg font-[Manrope] ${
                 activeItem === "Overview" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
               }`}
               onClick={() => handleItemClick("Overview")}>
@@ -81,6 +88,12 @@ const Navber = () => {
           </Link>
           <Link to="/Direct_Visitors">
             <li
+            style={{fontFamily: 'Manrope',
+              fontSize: '20px',
+              fontWeight: '500',
+              lineHeight: '27.32px',
+              textAlign: 'left',
+              }}
               className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
                 activeItem === "DirectVisitors"
                   ? "bg-[#3D2314] text-[#FFFFFF]"
@@ -97,6 +110,12 @@ const Navber = () => {
           </Link>
           <Link to="/Channel_Visitors">
             <li
+            style={{fontFamily: 'Manrope',
+              fontSize: '20px',
+              fontWeight: '500',
+              lineHeight: '27.32px',
+              textAlign: 'left',
+              }}
               className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
                 activeItem === "ChannelVisitors"
                   ? "bg-[#3D2314] text-[#FFFFFF]"
@@ -113,6 +132,12 @@ const Navber = () => {
           </Link>
           <Link to="/Channel_Partners">
             <li
+            style={{fontFamily: 'Manrope',
+              fontSize: '19px',
+              fontWeight: '500',
+              lineHeight: '27.32px',
+              textAlign: 'left',
+              }}
               className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
                 activeItem === "ChannelPartners"
                   ? "bg-[#3D2314] text-[#FFFFFF]"
@@ -129,6 +154,12 @@ const Navber = () => {
           </Link>
           <Link to="/Project">
             <li
+            style={{fontFamily: 'Manrope',
+              fontSize: '20px',
+              fontWeight: '500',
+              lineHeight: '27.32px',
+              textAlign: 'left',
+              }}
               className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
                 activeItem === "Projects" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
               }`}
@@ -143,6 +174,12 @@ const Navber = () => {
           </Link>
           <Link to="/Team">
             <li
+            style={{fontFamily: 'Manrope',
+              fontSize: '20px',
+              fontWeight: '500',
+              lineHeight: '27.32px',
+              textAlign: 'left',
+              }}
               className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
                 activeItem === "Team" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
               }`}
@@ -158,13 +195,24 @@ const Navber = () => {
         </ul>
       </div>
       <div>
-        <ul className="flex flex-col gap-4">
-          <li
+        <ul className="flex flex-col" style={{gap:'8px'}}>
+          <li style={{fontFamily: 'Manrope',
+fontSize: '20px',
+fontWeight: '500',
+lineHeight: '27.32px',
+textAlign: 'left',
+}}
             className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] `}>
             <img src={Settings2} alt="Settings" />
             Settings
           </li>
           <li
+          style={{fontFamily: 'Manrope',
+            fontSize: '20px',
+            fontWeight: '500',
+            lineHeight: '27.32px',
+            textAlign: 'left',
+            }}
             className={`text-[red] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-[s] lg:text-lg font-[Manrope] `}>
             <img src={Logout2} alt="Logout" />
             Logout

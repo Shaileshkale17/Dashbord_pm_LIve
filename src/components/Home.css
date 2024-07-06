@@ -1,0 +1,41 @@
+@media only screen and (max-width: 1180px) {
+
+
+  .TNav{
+         width: 939px !important;
+  }
+
+  .Tab3{
+    width: 935px !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+
+    .TNav{
+           width: 782px !important;
+    }
+  
+    .Tab3{
+      width: 785px !important;
+    }
+  }
+ 
+th{
+    position: sticky;
+    top: -2px;
+    background:  #E8E8E8;
+}
+
+.table-wrapper{
+    max-height: 480px !important;
+    overflow-y: scroll;
+}
+
+div input::placeholder{
+    color: #3D2314;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: Manrope;
+}

@@ -11,7 +11,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="flex flex-row bg-[#F7F3E8]">
+    <div className="flex flex-row bg-[#F7F3E8]" style={{position:'fixed', width:'100%'}}>
       <div className="w-auto h-screen ">
         <Navber />
       </div>
