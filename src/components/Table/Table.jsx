@@ -221,7 +221,7 @@ const Table = () => {
             </thead>
            
             <tbody>
-              {data.map((visitor, index) => (
+              {data.filter(({ name }) => name.toLowerCase().includes(valueinput.toLowerCase())).map((visitor, index) => (
                 <tr style={{paddingLeft:'5px'}}  className="py-1 border-b text-[9px] lg:text-[14px]" key={index}>
                   <td style={{paddingLeft:'5px'}}>
                     {DateupdatedAt(visitor.updatedAt)}

@@ -20,22 +20,23 @@ const Table1 = () => {
 
   const deletedAt = async (id) => {
     await axios.delete(
-      `https://prodictivity-management-tool2.vercel.app/api/customers/delete/${id}`
+      `https://prodictivity-management-tool2.vercel.app/api/partners/delete/${id}`
     );
     fetchData(); // Refresh data after deletion
   };
 
   const fetchData = async () => {
     const res = await axios.get(
-      `https://prodictivity-management-tool2.vercel.app/api/customers/fetch-all`
+      `https://prodictivity-management-tool2.vercel.app/api/partners/fetch-all`
     );
     setdata(res.data);
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [deletedAt]);
 
+  console.log("data",data)
   // Data Time
   const DateupdatedAt = (DateupdatedAt) => {
     const formattedDate = format(new Date(DateupdatedAt), "dd MMM | hh:mm a");
@@ -43,28 +44,28 @@ const Table1 = () => {
   };
 
   // Pagination Logic
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = data
-    .filter(({ name }) => name.toLowerCase().includes(valueinput.toLowerCase()))
-    .slice(indexOfFirstRecord, indexOfLastRecord);
-  const totalPages = Math.ceil(
-    data.filter(({ name }) =>
-      name.toLowerCase().includes(valueinput.toLowerCase())
-    ).length / recordsPerPage
-  );
+  // const indexOfLastRecord = currentPage * recordsPerPage;
+  // const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  // const currentRecords = data
+  //   .filter(({ name }) => name.toLowerCase().includes(valueinput.toLowerCase()))
+  //   .slice(indexOfFirstRecord, indexOfLastRecord);
+  // const totalPages = Math.ceil(
+  //   data.filter(({ name }) =>
+  //     name.toLowerCase().includes(valueinput.toLowerCase())
+  //   ).length / recordsPerPage
+  // );
 
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  // const nextPage = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
 
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  // const prevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage(currentPage - 1);
+  //   }
+  // };
 
   return (
     <>
@@ -241,20 +242,20 @@ const Table1 = () => {
               </tr> */}
             </thead>
             <tbody>
-              {data.map((visitor, index) => (
+              {data.filter(({ channelPartnerName }) => channelPartnerName.toLowerCase().includes(valueinput.toLowerCase())).map((visitor, index) => (
                 <tr className="text-[9px] lg:text-[14px]" key={index}>
                   <td className="py-1 border-b" style={{paddingLeft:'5px'}}>
                     {DateupdatedAt(visitor.updatedAt)}
                   </td>
                   <td className="py-1 border-b text-center">
-                    {/* {visitor.customerId} */}
+                    {visitor.createdAt}
                     00:00
                   </td>
                   <td className="py-1 border-b text-center">
                     00:00
                   </td>
                   <td className="py-1 border-b text-center">
-                  {/* {visitor.name} */}
+                  {visitor.partnerId}
                   
                   <Link  style={{
                     fontFamily: 'Manrope',
@@ -274,18 +275,18 @@ const Table1 = () => {
                   </td>
                   
                   <td className="py-1 border-b text-center">
-                  {/* {visitor.name} */}
-                  Rainbow Oversies pvt ltd
+                  {visitor.channelPartnerCompanyName}
+                  
                   </td>
                   <td className="py-1 border-b text-center">
                  
-                       Sameer Choudhary                    
-                  </td>
-                  <td className="py-1 border-b text-center">
-                    Anand Jaiswal
+                    {visitor.channelPartnerName}
                     </td>
                   <td className="py-1 border-b text-center">
-                    {/* {visitor.mobileS} */}1594
+                    {visitor.customerName}
+                    </td>
+                  <td className="py-1 border-b text-center">
+                    {visitor.customerMobileLastFour}
                     </td>
 
                   <td className="py-1 border-b text-center">
@@ -339,7 +340,7 @@ const Table1 = () => {
               </button> */}
             </div>
           </div>
-        // </div>
+        </div>
       )}
     </>
   );
