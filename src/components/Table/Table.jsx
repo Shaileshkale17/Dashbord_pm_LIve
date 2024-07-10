@@ -18,19 +18,27 @@ const Table = () => {
   const [data, setdata] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
+  const [loading, setLoading] = useState(false);
 
-  const deletedAt = async (id) => {
-    await axios.delete(
-      `https://project-rof.vercel.app/api/customers/delete/${id}`
-    );
-    fetchData(); // Refresh data after deletion
+  const deletedAt = async (id, customerId) => {
+    const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${customerId}?`);
+
+    if (confirmDelete) {
+      await axios.delete(
+
+        `https://project-rof.vercel.app/api/customers/delete/${id}`
+      );
+      fetchData(); // Refresh data after deletion
+    }
   };
 
   const fetchData = async () => {
+    setLoading(true)
     const res = await axios.get(
       `https://project-rof.vercel.app/api/customers/fetch-all`
     );
     setdata(res.data);
+    setLoading(false)
   };
 
   useEffect(() => {
@@ -73,7 +81,7 @@ const Table = () => {
 
   return (
     <div className="arrowss">
-      {data.length === 0 ? (
+      {loading ? (
         <Loding />
       ) : (
         <div
@@ -129,7 +137,7 @@ const Table = () => {
           </div>
           <div className="outer-wrapper">
             <div className="table-wrapper">
-              <table
+              {data.length !== 0 ? <table
                 className="min-w-full bg-white"
                 style={{ boxShadow: " 0px 0px 4px 0px #00000040" }}>
                 <thead>
@@ -335,7 +343,7 @@ const Table = () => {
                     /> */}
 
                           <RiDeleteBin6Line
-                            onClick={() => deletedAt(visitor._id)}
+                            onClick={() => deletedAt(visitor._id, visitor.customerId)}
                             style={{
                               cursor: "pointer",
                               fontSize: "18px",
@@ -346,7 +354,7 @@ const Table = () => {
                       </tr>
                     ))}
                 </tbody>
-              </table>
+              </table> : <p> No records founds...!</p>}
             </div>
           </div>
           {/* <div className="flex justify-end items-center  gap-4">

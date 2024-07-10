@@ -17,24 +17,31 @@ const Table1 = () => {
   const [data, setdata] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
+  const [loading, setLoading] = useState(false);
 
-  const deletedAt = async (id) => {
-    await axios.delete(
-      `https://project-rof.vercel.app/api/partners/delete/${id}`
-    );
-    fetchData(); // Refresh data after deletion
+  const deletedAt = async (id, partnerId) => {
+    const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${partnerId}`)
+    if (confirmDelete) {
+      await axios.delete(
+        `https://project-rof.vercel.app/api/partners/delete/${id}`
+      );
+      fetchData(); //Refresh data after deleteing;
+    }
+
   };
 
   const fetchData = async () => {
+    setLoading(true)
     const res = await axios.get(
       `https://project-rof.vercel.app/api/partners/fetch-all`
     );
     setdata(res.data);
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchData();
-  }, [deletedAt]);
+  }, []);
 
   console.log("data", data);
   // Data Time
@@ -73,7 +80,7 @@ const Table1 = () => {
 
   return (
     <>
-      {data.length === 0 ? (
+      {loading ? (
         <Loding />
       ) : (
         <div
@@ -128,7 +135,7 @@ const Table1 = () => {
             </div>
             <div className="outer-wrapper">
               <div className="table-wrapper">
-                <table
+                {data.length !== 0 ? <table
                   className="min-w-full bg-white"
                   style={{ boxShadow: " 0px 0px 4px 0px #00000040" }}>
                   <thead>
@@ -283,97 +290,93 @@ const Table1 = () => {
               </tr> */}
                   </thead>
                   <tbody>
-                    {data
-                      .filter(({ channelPartnerName }) =>
-                        channelPartnerName
-                          .toLowerCase()
-                          .includes(valueinput.toLowerCase())
-                      )
-                      .map((visitor, index) => (
-                        <tr className="text-[9px] lg:text-[14px]" key={index}>
-                          <td
-                            className="py-1 border-b"
-                            style={{ paddingLeft: "5px" }}>
-                            {DateupdatedAt(visitor.updatedAt)}
-                          </td>
-                          <td className="py-1 border-b text-center">
-                            {ResponseAt(visitor.createdAt)}
-                          </td>
-                          <td className="py-1 border-b text-center">00:00</td>
-                          <td className="py-1 border-b text-center">
-                            {visitor.partnerId}
+                    {data.filter(({ channelPartnerName }) =>
+                      channelPartnerName.toLowerCase().includes(valueinput.toLowerCase())
+                    ).map((visitor, index) => (
+                      <tr className="text-[9px] lg:text-[14px]" key={index}>
+                        <td
+                          className="py-1 border-b"
+                          style={{ paddingLeft: "5px" }}>
+                          {DateupdatedAt(visitor.updatedAt)}
+                        </td>
+                        <td className="py-1 border-b text-center">
+                          {ResponseAt(visitor.createdAt)}
+                        </td>
+                        <td className="py-1 border-b text-center">00:00</td>
+                        <td className="py-1 border-b text-center">
+                          {visitor.partnerId}
 
-                            <Link
-                              style={{
-                                fontFamily: "Manrope",
-                                fontSize: "14px",
-                                fontWeight: "700",
-                                lineHeight: "19.12px",
-                                textAlign: "left",
-                                color: "#000AFF",
-                                textDecoration: "underline",
-                              }}>
-                              {visitor.customerId}
-                            </Link>
-                          </td>
+                          <Link
+                            style={{
+                              fontFamily: "Manrope",
+                              fontSize: "14px",
+                              fontWeight: "700",
+                              lineHeight: "19.12px",
+                              textAlign: "left",
+                              color: "#000AFF",
+                              textDecoration: "underline",
+                            }}>
+                            {visitor.customerId}
+                          </Link>
+                        </td>
 
-                          <td className="py-1 border-b text-center">
-                            {visitor.channelPartnerCompanyName}
-                          </td>
-                          <td className="py-1 border-b text-center">
-                            {visitor.channelPartnerName}
-                          </td>
-                          <td className="py-1 border-b text-center">
-                            {visitor.customerName}
-                          </td>
-                          <td className="py-1 border-b text-center">
-                            {visitor.customerMobileLastFour}
-                          </td>
+                        <td className="py-1 border-b text-center">
+                          {visitor.channelPartnerCompanyName}
+                        </td>
+                        <td className="py-1 border-b text-center">
+                          {visitor.channelPartnerName}
+                        </td>
+                        <td className="py-1 border-b text-center">
+                          {visitor.customerName}
+                        </td>
+                        <td className="py-1 border-b text-center">
+                          {visitor.customerMobileLastFour}
+                        </td>
 
-                          <td className="py-1 border-b text-center">
-                            {visitor.projectName}
-                          </td>
-                          <td className="py-1 border-b text-center">
-                            {visitor.attendantName}
-                          </td>
+                        <td className="py-1 border-b text-center">
+                          {visitor.projectName}
+                        </td>
+                        <td className="py-1 border-b text-center">
+                          {visitor.attendantName}
+                        </td>
 
-                          <td className="py-1 border-b flex gap-2">
-                            {/* <img
+                        <td className="py-1 border-b flex gap-2">
+                          {/* <img
                       src={pencil}
                       alt="Edit"
                       className="cursor-pointer"
                       
                     /> */}
 
-                            <PiNotePencilBold
-                              onClick={() => handleEdit(visitor._id)}
-                              style={{
-                                cursor: "pointer",
-                                fontSize: "18px",
-                                color: "#632E04",
-                              }}
-                            />
-                            <br />
-                            {/* <img
+                          <PiNotePencilBold
+                            onClick={() => handleEdit(visitor._id)}
+                            style={{
+                              cursor: "pointer",
+                              fontSize: "18px",
+                              color: "#632E04",
+                            }}
+                          />
+                          <br />
+                          {/* <img
                       src={deleteIcon}
                       alt="Delete"
                       className="cursor-pointer"
                      
                     /> */}
 
-                            <RiDeleteBin6Line
-                              onClick={() => deletedAt(visitor._id)}
-                              style={{
-                                cursor: "pointer",
-                                fontSize: "18px",
-                                color: "#930000",
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                          <RiDeleteBin6Line
+                            onClick={() => deletedAt(visitor._id, visitor.partnerId)}
+                            style={{
+                              cursor: "pointer",
+                              fontSize: "18px",
+                              color: "#930000",
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
-                </table>
+                </table> : <p> No records found...!</p>}
               </div>
             </div>
             {/* <div className="flex justify-end items-center  gap-4">
