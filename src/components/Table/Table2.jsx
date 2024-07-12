@@ -1,20 +1,36 @@
 import { useEffect, useState } from "react";
+import { LuPencilLine } from "react-icons/lu";
 import Searchsvg from "../../assets/material-symbols_search.svg";
-import { PiNotePencilBold } from "react-icons/pi";
-import { RiDeleteBin6Line } from "react-icons/ri";
+
 import { IoIosArrowForward } from "react-icons/io";
 import axios from "axios";
 import { format } from "date-fns";
 import Loding from "../Loding/Loding";
+
 import "../Home.css";
 import { Link } from "react-router-dom";
+import { LuEyeOff } from "react-icons/lu";
+import { LuEye } from "react-icons/lu";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa";
 
-const Table = () => {
+
+const Table2 = () => {
   const [valueinput, setvalueinput] = useState("");
+  const [viewedItems, setViewedItems] = useState([]);
   const [data, setdata] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
   const [loading, setLoading] = useState(false);
+
+  const handleView = (id) => {
+    if (viewedItems.includes(id)) {
+      // Item already viewed, remove it from viewedItems
+      setViewedItems(prevViewedItems => prevViewedItems.filter(item => item !== id));
+    } else {
+      // Item not viewed, add it to viewedItems
+      setViewedItems(prevViewedItems => [...prevViewedItems, id]);
+    }}
 
   const deletedAt = async (id, customerId) => {
     const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${customerId}?`);
@@ -31,7 +47,7 @@ const Table = () => {
   const fetchData = async () => {
     setLoading(true)
     const res = await axios.get(
-      `https://project-rof.vercel.app/api/customers/fetch-all`
+     ` https://project-rof.vercel.app/api/customers/fetch-all`
     );
     setdata(res.data);
     setLoading(false)
@@ -51,7 +67,7 @@ const Table = () => {
     const formattedDate = format(new Date(DateupdatedAt), "hh:mm a");
     return formattedDate;
   };
- 
+
 
   return (
     <div className="arrowss">
@@ -76,8 +92,6 @@ const Table = () => {
               }}>
               Home
               <IoIosArrowForward style={{ color: "#1C1B1F" }} />
-              
-
               <span
                 style={{
                   fontFamily: "Poppins",
@@ -85,10 +99,9 @@ const Table = () => {
                   fontSize: "24px",
                 }}
                 className="font-medium">
-                Direct Visitors
+                {/* Direct Visitors */}
+                Channel Partners
               </span>
-              
-           
             </h1>
 
             <div className="flex flex-row items-center justify-start">
@@ -114,10 +127,14 @@ const Table = () => {
             </div>
           </div>
           <div className="outer-wrapper">
-            <div className="table-wrapper">
-              {data.length !== 0 ? <table
+            <div className="table-wrapper" style={{width:'999px'}}>
+              {data.length !== 0 ?
+              
+              <table
+
                 className="min-w-full bg-white"
-                style={{ boxShadow: " 0px 0px 4px 0px #00000040" }}>
+
+                style={{ boxShadow: " 0px 0px 4px 0px #00000040", }}>
                 <thead>
                   <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
                     <th
@@ -128,10 +145,11 @@ const Table = () => {
                         lineHeight: "16.39px",
                         textAlign: "left",
                         paddingLeft: "7px",
-                        width: "115px",
+                        width: "65px",
                         padding: "5px",
                       }}>
-                      Date
+                      {/* Date */}
+                      Serial No
                     </th>
                     <th
                       className="text-center"
@@ -141,9 +159,11 @@ const Table = () => {
                         fontWeight: "500",
                         lineHeight: "16.39px",
                         textAlign: "center",
-                        padding: "5px",
+                        padding: "5spx",
+                        width:'180px'
                       }}>
-                      Response Time
+                      {/* Response Time */}
+                      Channel ID
                     </th>
                     <th
                       className="border-b text-center"
@@ -154,8 +174,11 @@ const Table = () => {
                         lineHeight: "16.39px",
                         textAlign: "center",
                         padding: "5px",
+                        width:'253px'
+
                       }}>
-                      Meeting Duration
+                      {/* Meeting Duration */}
+                      List of Channel Name
                     </th>
                     <th
                       className="border-b text-center"
@@ -165,8 +188,10 @@ const Table = () => {
                         fontWeight: "500",
                         lineHeight: "16.39px",
                         textAlign: "center",
+                        width:'253px'
+
                       }}>
-                      Customer Name
+                      {/* Customer Name */}Email
                     </th>
                     <th
                       className="border-b text-center"
@@ -177,8 +202,10 @@ const Table = () => {
                         lineHeight: "16.39px",
                         textAlign: "center",
                         padding: "5px",
+                        width:'109px'
+
                       }}>
-                      Customer ID
+                      Phone No
                     </th>
                     <th
                       className="border-b"
@@ -189,8 +216,10 @@ const Table = () => {
                         lineHeight: "16.39px",
                         textAlign: "center",
                         padding: "5px",
+                        width:'170px'
+
                       }}>
-                      Mobile No
+                      Address
                     </th>
                     <th
                       className="border-b text-center"
@@ -201,47 +230,14 @@ const Table = () => {
                         lineHeight: "16.39px",
                         textAlign: "center",
                         padding: "5px",
+                        width:'65px'
+
                       }}>
-                      Email ID
+                     
                     </th>
-                    <th
-                      className="border-b"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                      }}>
-                      Project
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        width: "100px",
-                        padding: "5px",
-                      }}>
-                      Attendant
-                    </th>
-                    <th
-                      className="border-b"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "left",
-                        padding: "5px",
-                      }}>
-                      Actions
-                    </th>
-                    {/* <th className="py-2 px-2 lg:px-6 border-b"> </th> */}
+                 
+                 
+                  
                   </tr>
                 </thead>
 
@@ -253,72 +249,79 @@ const Table = () => {
                     .map((visitor, index) => (
                       <tr
                         style={{ paddingLeft: "5px" }}
-                        className="py-1 border-b text-[9px] lg:text-[14px]"
+                        className="py-1 border-b text-[9px] lg:text-[14px]  "
                         key={index}>
-                        <td style={{ paddingLeft: "5px" }}>
-                          {DateupdatedAt(visitor.updatedAt)}
+                         {/* <td className="p-2">{index + 1}</td> */}
+                        <td  style={{ paddingLeft: "5px" }}>
+                          {/* {DateupdatedAt(visitor.updatedAt)} */}
+                          <td className="py-3  ml-6 text-center flex items-center ">
+                                {index + 1}
+                          </td>
                         </td>
-                        <td className="py-1 border-b text-center">
-                          {ResponseAt(visitor.updatedAt)}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          00:00
-                          {/* {visitor.name}   */}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.name}
-                        </td>
-                        <td className="py-1 border-b text-center">
+
+                       
+                        <td className="py-3 border-b text-center">
+                          {/* {ResponseAt(visitor.updatedAt)} */}
                           <Link
                             style={{
-                              fontFamily: "Manrope",
-                              fontSize: "14px",
-                              fontWeight: "700",
-                              lineHeight: "19.12px",
-                              textAlign: "left",
-                              color: "#000AFF",
-                              textDecoration: "underline",
+                                fontFamily: "Manrope",
+                                fontSize: "14px",
+                                fontWeight: "700",
+                                lineHeight: "19.12px",
+                                textAlign: "left",
+                                color: "#000AFF",
+                                textDecoration: "underline",
                             }}>
-                            {visitor.customerId}
+                            {/* {visitor.channelId} */}CHROF001
                           </Link>
                         </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.mobile}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.email}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.projectName}
+
+                      
+
+<Link to="/overseas">
+                    <td className="py-3  text-center flex items-center justify-center">
+                            <FaCircle className="mr-2 text-gray-500 " />
+                         <span >Rainbow Overseas Pvt. Ltd</span>
+                    </td>
+                    </Link>         
+
+
+
+                        <td className=" py-3 border-b text-center  ">
+                          {/* {visitor.Email} */}rainbowoverseas@gmail.com
                         </td>
 
-                        <td className="py-1 border-b text-center text-center">
-                          {visitor.attendantName}
+                        <td className="  py-3 border-b text-center">
+                             {/* {visitor.Phone} */} 8484815614
+                        </td>
+                         
+                        <td className="  py-3 border-b text-center">
+                         454/Big wig, Civil Lines
                         </td>
 
-                        <td className="py-1 border-b flex gap-2">
-                        <Link to="/Edit">
 
-                          <PiNotePencilBold
-                            onClick={() => handleEdit(visitor._id)}
-                            style={{
-                              cursor: "pointer",
-                              fontSize: "18px",
-                              color: "#632E04",
-                            }}
-                          />
+
                        
 
-                    </Link>
 
-                          <RiDeleteBin6Line
-                            onClick={() => deletedAt(visitor._id, visitor.customerId)}
+
+                        <td className="py-3 text-center px-3">
+                         
+
+                        < LuEye
+                              onClick={() => handleView(visitor._id)}
                             style={{
                               cursor: "pointer",
                               fontSize: "18px",
-                              color: "#930000",
+                              color: "#00000",
+                              
                             }}
                           />
+                            {/* {viewedItems.includes(visitor._id) && <span className=""><LuEyeOff /></span>} */}
+
+                         
+
+                      
                         </td>
                       </tr>
                     ))}
@@ -326,29 +329,13 @@ const Table = () => {
               </table> : <p> No records founds...!</p>}
             </div>
           </div>
-          {/* <div className="flex justify-end items-center  gap-4">
-                  <span>
-                   Page {currentPage}-{totalPages} of {totalPages}
-                  </span> */}
-          <div>
-            {/* <button
-                onClick={prevPage}
-                disabled={currentPage === 1}
-                className="py-2 px-4 text-[#632E04] rounded">
-                &lt;
-              </button> */}
-            {/* <button
-                onClick={nextPage}
-                disabled={currentPage === totalPages}
-                className="py-2 px-4 text-[#632E04] rounded">
-                &gt;
-              </button> */}
-          </div>
+       
+         
         </div>
-        // </div>
+        
       )}
     </div>
   );
 };
 
-export default Table;
+export default Table2;

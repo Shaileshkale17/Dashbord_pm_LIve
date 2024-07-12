@@ -11,6 +11,8 @@ import Channel_Visitors from "./pages/Channel_Visitors/Channel_Visitors.jsx";
 import Channel_Partners from "./pages/Channel_Partners/Channel_Partners.jsx";
 import Project from "./pages/Project/Project.jsx";
 import Team from "./pages/Team/Team.jsx";
+import Channel_Partners_Overseas from "./pages/Channel_Partners_Overseas/Channel_Partners_Overseas.jsx";
+import FormEdit from "./components/EditForm/EditForm.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,8 +24,11 @@ const router = createBrowserRouter([
       { path: "/Direct_Visitors", element: <Direct_Visitors /> },
       { path: "/Channel_Visitors", element: <Channel_Visitors /> },
       { path: "/Channel_Partners", element: <Channel_Partners /> },
+      { path: "/overseas", element: <Channel_Partners_Overseas /> },
       { path: "/Project", element: <Project /> },
       { path: "/Team", element: <Team /> },
+      { path: "/Edit", element: <FormEdit /> },
+
     ],
   },
 ]);

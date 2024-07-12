@@ -32,7 +32,7 @@ const TopNavber = () => {
           onClick={() => clickfun()}
         />
       </div>
-      <div style={{boxShadow:' 0px 0px 4px 0px #00000040', padding:'6px 14px'}}
+      <div style={{boxShadow:' 0px 0px 4px 0px #00000040', padding:'6px 14px', zIndex:'+1'}}
         className={`absolute right-7 top-14 bg-white p-4 ${
           click === true ? "" : "hidden"
         } `}>
