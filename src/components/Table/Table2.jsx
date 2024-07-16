@@ -19,8 +19,8 @@ const Table2 = () => {
   const [valueinput, setvalueinput] = useState("");
   const [viewedItems, setViewedItems] = useState([]);
   const [data, setdata] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(10);
+  //const [currentPage, setCurrentPage] = useState(1);
+  //const [recordsPerPage] = useState(10);
   const [loading, setLoading] = useState(false);
 
   const handleView = (id) => {
@@ -32,7 +32,7 @@ const Table2 = () => {
       setViewedItems(prevViewedItems => [...prevViewedItems, id]);
     }}
 
-  const deletedAt = async (id, customerId) => {
+  /*const deletedAt = async (id, customerId) => {
     const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${customerId}?`);
 
     if (confirmDelete) {
@@ -42,20 +42,34 @@ const Table2 = () => {
       );
       fetchData(); // Refresh data after deletion
     }
+  };*/
+  const getData1 = async () => {
+    try {
+      const res = await axios.get(
+        `https://project-rof.vercel.app/api/channels`
+      );
+      setdata(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
+  
+  console.log(data);
+  useEffect(() => {
+    getData1();
+  }, []);
 
-  const fetchData = async () => {
+
+  /*const fetchData = async () => {
     setLoading(true)
     const res = await axios.get(
      ` https://project-rof.vercel.app/api/customers/fetch-all`
     );
     setdata(res.data);
     setLoading(false)
-  };
+  };*/
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  
 
   // Data Time
   const DateupdatedAt = (DateupdatedAt) => {
@@ -272,7 +286,7 @@ const Table2 = () => {
                                 color: "#000AFF",
                                 textDecoration: "underline",
                             }}>
-                            {/* {visitor.channelId} */}CHROF001
+                            {visitor.channelID} 
                           </Link>
                         </td>
 
@@ -281,18 +295,18 @@ const Table2 = () => {
 <Link to="/overseas">
                     <td className="py-3  text-center flex items-center justify-center">
                             <FaCircle className="mr-2 text-gray-500 " />
-                         <span >Rainbow Overseas Pvt. Ltd</span>
+                         <span >{visitor.name} </span>
                     </td>
                     </Link>         
 
 
 
                         <td className=" py-3 border-b text-center  ">
-                          {/* {visitor.Email} */}rainbowoverseas@gmail.com
+                          { visitor.email }
                         </td>
 
                         <td className="  py-3 border-b text-center">
-                             {/* {visitor.Phone} */} 8484815614
+                             {visitor.phone}  
                         </td>
                          
                         <td className="  py-3 border-b text-center">

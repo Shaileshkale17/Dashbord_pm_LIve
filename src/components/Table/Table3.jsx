@@ -12,25 +12,36 @@ import "../Home.css";
 const Table3 = () => {
   const [valueinput, setvalueinput] = useState("");
   const [data, setdata] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(10);
+  //const [currentPage, setCurrentPage] = useState(1);
+  //const [recordsPerPage] = useState(10);
 
-  const deletedAt = async (id) => {
-    await axios.delete(
-      `https://prodictivity-management-tool2.vercel.app/api/customers/delete/${id}`
-    );
-    fetchData(); // Refresh data after deletion
-  };
+  
 
-  const fetchData = async () => {
+  /*const fetchData = async () => {
     const res = await axios.get(
-      `https://prodictivity-management-tool2.vercel.app/api/customers/fetch-all`
+      `https://project-rof.vercel.app/api/channels`
     );
     setdata(res.data);
+    console(res.data);
   };
 
   useEffect(() => {
     fetchData();
+  }, []);*/
+
+  const getData1 = async () => {
+    try {
+      const res = await axios.get(
+        `https://project-rof.vercel.app/api/channels`
+      );
+      console.log("getDate1", res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData1();
   }, []);
 
   // Data Time
