@@ -19,8 +19,8 @@ const Table2 = () => {
   const [valueinput, setvalueinput] = useState("");
   const [viewedItems, setViewedItems] = useState([]);
   const [data, setdata] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(10);
+  //const [currentPage, setCurrentPage] = useState(1);
+  //const [recordsPerPage] = useState(10);
   const [loading, setLoading] = useState(false);
 
   const handleView = (id) => {
@@ -30,9 +30,10 @@ const Table2 = () => {
     } else {
       // Item not viewed, add it to viewedItems
       setViewedItems(prevViewedItems => [...prevViewedItems, id]);
-    }}
+    }
+  }
 
-  const deletedAt = async (id, customerId) => {
+  /*const deletedAt = async (id, customerId) => {
     const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${customerId}?`);
 
     if (confirmDelete) {
@@ -42,20 +43,34 @@ const Table2 = () => {
       );
       fetchData(); // Refresh data after deletion
     }
+  };*/
+  const getData1 = async () => {
+    try {
+      const res = await axios.get(
+        `https://project-rof.vercel.app/api/channels`
+      );
+      setdata(res.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const fetchData = async () => {
+  console.log(data);
+  useEffect(() => {
+    getData1();
+  }, []);
+
+
+  /*const fetchData = async () => {
     setLoading(true)
     const res = await axios.get(
      ` https://project-rof.vercel.app/api/customers/fetch-all`
     );
     setdata(res.data);
     setLoading(false)
-  };
+  };*/
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+
 
   // Data Time
   const DateupdatedAt = (DateupdatedAt) => {
@@ -127,143 +142,143 @@ const Table2 = () => {
             </div>
           </div>
           <div className="outer-wrapper">
-            <div className="table-wrapper" style={{width:'999px'}}>
+            <div className="table-wrapper" style={{ width: '999px' }}>
               {data.length !== 0 ?
-              
-              <table
 
-                className="min-w-full bg-white"
+                <table
 
-                style={{ boxShadow: " 0px 0px 4px 0px #00000040", }}>
-                <thead>
-                  <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
-                    <th
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "left",
-                        paddingLeft: "7px",
-                        width: "65px",
-                        padding: "5px",
-                      }}>
-                      {/* Date */}
-                      Serial No
-                    </th>
-                    <th
-                      className="text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5spx",
-                        width:'180px'
-                      }}>
-                      {/* Response Time */}
-                      Channel ID
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'253px'
+                  className="min-w-full bg-white"
 
-                      }}>
-                      {/* Meeting Duration */}
-                      List of Channel Name
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        width:'253px'
+                  style={{ boxShadow: " 0px 0px 4px 0px #00000040", }}>
+                  <thead>
+                    <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
+                      <th
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "left",
+                          paddingLeft: "7px",
+                          width: "65px",
+                          padding: "5px",
+                        }}>
+                        {/* Date */}
+                        Serial No
+                      </th>
+                      <th
+                        className="text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5spx",
+                          width: '180px'
+                        }}>
+                        {/* Response Time */}
+                        Channel ID
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: '253px'
 
-                      }}>
-                      {/* Customer Name */}Email
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'109px'
+                        }}>
+                        {/* Meeting Duration */}
+                        List of Channel Name
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          width: '253px'
 
-                      }}>
-                      Phone No
-                    </th>
-                    <th
-                      className="border-b"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'170px'
+                        }}>
+                        {/* Customer Name */}Email
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: '109px'
 
-                      }}>
-                      Address
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'65px'
+                        }}>
+                        Phone No
+                      </th>
+                      <th
+                        className="border-b"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: '170px'
 
-                      }}>
-                     
-                    </th>
-                 
-                 
-                  
-                  </tr>
-                </thead>
+                        }}>
+                        Address
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: '65px'
 
-                <tbody>
-                  {data
-                    .filter(({ name }) =>
-                      name.toLowerCase().includes(valueinput.toLowerCase())
-                    )
-                    .map((visitor, index) => (
-                      <tr
-                        style={{ paddingLeft: "5px" }}
-                        className="py-1 border-b text-[9px] lg:text-[14px]  "
-                        key={index}>
-                         {/* <td className="p-2">{index + 1}</td> */}
-                        <td  style={{ paddingLeft: "5px" }}>
-                          {/* {DateupdatedAt(visitor.updatedAt)} */}
-                          <td className="py-3  ml-6 text-center flex items-center ">
-                                {index + 1}
+                        }}>
+
+                      </th>
+
+
+
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {data
+                      .filter(({ name }) =>
+                        name.toLowerCase().includes(valueinput.toLowerCase())
+                      )
+                      .map((visitor, index) => (
+                        <tr
+                          style={{ paddingLeft: "5px" }}
+                          className="py-1 border-b text-[9px] lg:text-[14px]  "
+                          key={index}>
+                          {/* <td className="p-2">{index + 1}</td> */}
+                          <td style={{ paddingLeft: "5px" }}>
+                            {/* {DateupdatedAt(visitor.updatedAt)} */}
+                            <td className="py-3  ml-6 text-center flex items-center ">
+                              {index + 1}
+                            </td>
                           </td>
-                        </td>
 
-                       
-                        <td className="py-3 border-b text-center">
-                          {/* {ResponseAt(visitor.updatedAt)} */}
-                          <Link
-                            style={{
+
+                          <td className="py-3 border-b text-center">
+                            {/* {ResponseAt(visitor.updatedAt)} */}
+                            <Link
+                              style={{
                                 fontFamily: "Manrope",
                                 fontSize: "14px",
                                 fontWeight: "700",
@@ -271,68 +286,70 @@ const Table2 = () => {
                                 textAlign: "left",
                                 color: "#000AFF",
                                 textDecoration: "underline",
-                            }}>
-                            {/* {visitor.channelId} */}CHROF001
+                              }}>
+                              {visitor.channelID}
+                            </Link>
+                          </td>
+
+
+
+                          <Link to="/overseas">
+                            <td className="py-3  text-center flex items-center justify-center">
+                              <FaCircle className="mr-2 text-gray-500 " />
+                              <span >{visitor.name} </span>
+                            </td>
                           </Link>
-                        </td>
-
-                      
-
-<Link to="/overseas">
-                    <td className="py-3  text-center flex items-center justify-center">
-                            <FaCircle className="mr-2 text-gray-500 " />
-                         <span >Rainbow Overseas Pvt. Ltd</span>
-                    </td>
-                    </Link>         
 
 
 
-                        <td className=" py-3 border-b text-center  ">
-                          {/* {visitor.Email} */}rainbowoverseas@gmail.com
-                        </td>
+                          <td className=" py-3 border-b text-center  ">
+                            {visitor.email}
+                          </td>
 
-                        <td className="  py-3 border-b text-center">
-                             {/* {visitor.Phone} */} 8484815614
-                        </td>
-                         
-                        <td className="  py-3 border-b text-center">
-                         454/Big wig, Civil Lines
-                        </td>
+                          <td className="  py-3 border-b text-center">
+                            {visitor.phone}
+                          </td>
 
+                          <td className="  py-3 border-b text-center">
+                            {visitor.address}
 
 
-                       
+                          </td>
 
 
 
-                        <td className="py-3 text-center px-3">
-                         
 
-                        < LuEye
+
+
+
+                          <td className="py-3 text-center px-3">
+
+
+                            < LuEye
                               onClick={() => handleView(visitor._id)}
-                            style={{
-                              cursor: "pointer",
-                              fontSize: "18px",
-                              color: "#00000",
-                              
-                            }}
-                          />
+                              style={{
+                                cursor: "pointer",
+                                fontSize: "18px",
+                                color: "#00000",
+
+                              }}
+                            />
                             {/* {viewedItems.includes(visitor._id) && <span className=""><LuEyeOff /></span>} */}
 
-                         
 
-                      
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table> : <p> No records founds...!</p>}
+
+
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table> : <p> No records founds...!</p>}
             </div>
           </div>
-       
-         
+
+
         </div>
-        
+
       )}
     </div>
   );
