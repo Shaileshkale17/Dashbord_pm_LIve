@@ -27,8 +27,7 @@ const router = createBrowserRouter([
       { path: "/overseas", element: <Channel_Partners_Overseas /> },
       { path: "/Project", element: <Project /> },
       { path: "/Team", element: <Team /> },
-      { path: "/Edit", element: <FormEdit /> },
-
+      { path: "/Direct_Visitors/:id", element: <FormEdit /> },
     ],
   },
 ]);

@@ -14,7 +14,6 @@ import { LuEye } from "react-icons/lu";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
 
-
 const Table2 = () => {
   const [valueinput, setvalueinput] = useState("");
   const [viewedItems, setViewedItems] = useState([]);
@@ -26,18 +25,22 @@ const Table2 = () => {
   const handleView = (id) => {
     if (viewedItems.includes(id)) {
       // Item already viewed, remove it from viewedItems
-      setViewedItems(prevViewedItems => prevViewedItems.filter(item => item !== id));
+      setViewedItems((prevViewedItems) =>
+        prevViewedItems.filter((item) => item !== id)
+      );
     } else {
       // Item not viewed, add it to viewedItems
-      setViewedItems(prevViewedItems => [...prevViewedItems, id]);
-    }}
+      setViewedItems((prevViewedItems) => [...prevViewedItems, id]);
+    }
+  };
 
   const deletedAt = async (id, customerId) => {
-    const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${customerId}?`);
+    const confirmDelete = window.confirm(
+      `Do you really want to delete the record with ID ${customerId}?`
+    );
 
     if (confirmDelete) {
       await axios.delete(
-
         `https://project-rof.vercel.app/api/customers/delete/${id}`
       );
       fetchData(); // Refresh data after deletion
@@ -45,12 +48,12 @@ const Table2 = () => {
   };
 
   const fetchData = async () => {
-    setLoading(true)
+    setLoading(true);
     const res = await axios.get(
-     ` https://project-rof.vercel.app/api/customers/fetch-all`
+      ` https://project-rof.vercel.app/api/customers/fetch-all`
     );
     setdata(res.data);
-    setLoading(false)
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -67,7 +70,6 @@ const Table2 = () => {
     const formattedDate = format(new Date(DateupdatedAt), "hh:mm a");
     return formattedDate;
   };
-
 
   return (
     <div className="arrowss">
@@ -127,143 +129,129 @@ const Table2 = () => {
             </div>
           </div>
           <div className="outer-wrapper">
-            <div className="table-wrapper" style={{width:'999px'}}>
-              {data.length !== 0 ?
-              
-              <table
+            <div className="table-wrapper" style={{ width: "999px" }}>
+              {data.length !== 0 ? (
+                <table
+                  className="min-w-full bg-white"
+                  style={{ boxShadow: " 0px 0px 4px 0px #00000040" }}>
+                  <thead>
+                    <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
+                      <th
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "left",
+                          paddingLeft: "7px",
+                          width: "65px",
+                          padding: "5px",
+                        }}>
+                        {/* Date */}
+                        Serial No
+                      </th>
+                      <th
+                        className="text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5spx",
+                          width: "180px",
+                        }}>
+                        {/* Response Time */}
+                        Channel ID
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: "253px",
+                        }}>
+                        {/* Meeting Duration */}
+                        List of Channel Name
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          width: "253px",
+                        }}>
+                        {/* Customer Name */}Email
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: "109px",
+                        }}>
+                        Phone No
+                      </th>
+                      <th
+                        className="border-b"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: "170px",
+                        }}>
+                        Address
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                          width: "65px",
+                        }}></th>
+                    </tr>
+                  </thead>
 
-                className="min-w-full bg-white"
-
-                style={{ boxShadow: " 0px 0px 4px 0px #00000040", }}>
-                <thead>
-                  <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
-                    <th
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "left",
-                        paddingLeft: "7px",
-                        width: "65px",
-                        padding: "5px",
-                      }}>
-                      {/* Date */}
-                      Serial No
-                    </th>
-                    <th
-                      className="text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5spx",
-                        width:'180px'
-                      }}>
-                      {/* Response Time */}
-                      Channel ID
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'253px'
-
-                      }}>
-                      {/* Meeting Duration */}
-                      List of Channel Name
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        width:'253px'
-
-                      }}>
-                      {/* Customer Name */}Email
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'109px'
-
-                      }}>
-                      Phone No
-                    </th>
-                    <th
-                      className="border-b"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'170px'
-
-                      }}>
-                      Address
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                        width:'65px'
-
-                      }}>
-                     
-                    </th>
-                 
-                 
-                  
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {data
-                    .filter(({ name }) =>
-                      name.toLowerCase().includes(valueinput.toLowerCase())
-                    )
-                    .map((visitor, index) => (
-                      <tr
-                        style={{ paddingLeft: "5px" }}
-                        className="py-1 border-b text-[9px] lg:text-[14px]  "
-                        key={index}>
-                         {/* <td className="p-2">{index + 1}</td> */}
-                        <td  style={{ paddingLeft: "5px" }}>
-                          {/* {DateupdatedAt(visitor.updatedAt)} */}
-                          <td className="py-3  ml-6 text-center flex items-center ">
-                                {index + 1}
+                  <tbody>
+                    {data
+                      .filter(({ name }) =>
+                        name.toLowerCase().includes(valueinput.toLowerCase())
+                      )
+                      .map((visitor, index) => (
+                        <tr
+                          style={{ paddingLeft: "5px" }}
+                          className="py-1 border-b text-[9px] lg:text-[14px]  "
+                          key={index}>
+                          {/* <td className="p-2">{index + 1}</td> */}
+                          <td style={{ paddingLeft: "5px" }}>
+                            {/* {DateupdatedAt(visitor.updatedAt)} */}
+                            <td className="py-3  ml-6 text-center flex items-center ">
+                              {index + 1}
+                            </td>
                           </td>
-                        </td>
 
-                       
-                        <td className="py-3 border-b text-center">
-                          {/* {ResponseAt(visitor.updatedAt)} */}
-                          <Link
-                            style={{
+                          <td className="py-3 border-b text-center">
+                            {/* {ResponseAt(visitor.updatedAt)} */}
+                            <Link
+                              style={{
                                 fontFamily: "Manrope",
                                 fontSize: "14px",
                                 fontWeight: "700",
@@ -271,68 +259,51 @@ const Table2 = () => {
                                 textAlign: "left",
                                 color: "#000AFF",
                                 textDecoration: "underline",
-                            }}>
-                            {/* {visitor.channelId} */}CHROF001
+                              }}>
+                              {/* {visitor.channelId} */}CHROF001
+                            </Link>
+                          </td>
+
+                          <Link to="/overseas">
+                            <td className="py-3  text-center flex items-center justify-center">
+                              <FaCircle className="mr-2 text-gray-500 " />
+                              <span>Rainbow Overseas Pvt. Ltd</span>
+                            </td>
                           </Link>
-                        </td>
 
-                      
+                          <td className=" py-3 border-b text-center  ">
+                            {/* {visitor.Email} */}rainbowoverseas@gmail.com
+                          </td>
 
-<Link to="/overseas">
-                    <td className="py-3  text-center flex items-center justify-center">
-                            <FaCircle className="mr-2 text-gray-500 " />
-                         <span >Rainbow Overseas Pvt. Ltd</span>
-                    </td>
-                    </Link>         
+                          <td className="  py-3 border-b text-center">
+                            {/* {visitor.Phone} */} 8484815614
+                          </td>
 
+                          <td className="  py-3 border-b text-center">
+                            454/Big wig, Civil Lines
+                          </td>
 
-
-                        <td className=" py-3 border-b text-center  ">
-                          {/* {visitor.Email} */}rainbowoverseas@gmail.com
-                        </td>
-
-                        <td className="  py-3 border-b text-center">
-                             {/* {visitor.Phone} */} 8484815614
-                        </td>
-                         
-                        <td className="  py-3 border-b text-center">
-                         454/Big wig, Civil Lines
-                        </td>
-
-
-
-                       
-
-
-
-                        <td className="py-3 text-center px-3">
-                         
-
-                        < LuEye
+                          <td className="py-3 text-center px-3">
+                            <LuEye
                               onClick={() => handleView(visitor._id)}
-                            style={{
-                              cursor: "pointer",
-                              fontSize: "18px",
-                              color: "#00000",
-                              
-                            }}
-                          />
+                              style={{
+                                cursor: "pointer",
+                                fontSize: "18px",
+                                color: "#00000",
+                              }}
+                            />
                             {/* {viewedItems.includes(visitor._id) && <span className=""><LuEyeOff /></span>} */}
-
-                         
-
-                      
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table> : <p> No records founds...!</p>}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p> No records founds...!</p>
+              )}
             </div>
           </div>
-       
-         
         </div>
-        
       )}
     </div>
   );

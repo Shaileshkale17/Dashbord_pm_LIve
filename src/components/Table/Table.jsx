@@ -17,11 +17,12 @@ const Table = () => {
   const [loading, setLoading] = useState(false);
 
   const deletedAt = async (id, customerId) => {
-    const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${customerId}?`);
+    const confirmDelete = window.confirm(
+      `Do you really want to delete the record with ID ${customerId}?`
+    );
 
     if (confirmDelete) {
       await axios.delete(
-
         `https://project-rof.vercel.app/api/customers/delete/${id}`
       );
       fetchData(); // Refresh data after deletion
@@ -29,12 +30,12 @@ const Table = () => {
   };
 
   const fetchData = async () => {
-    setLoading(true)
+    setLoading(true);
     const res = await axios.get(
       `https://project-rof.vercel.app/api/customers/fetch-all`
     );
     setdata(res.data);
-    setLoading(false)
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -51,7 +52,6 @@ const Table = () => {
     const formattedDate = format(new Date(DateupdatedAt), "hh:mm a");
     return formattedDate;
   };
- 
 
   return (
     <div className="arrowss">
@@ -76,8 +76,6 @@ const Table = () => {
               }}>
               Home
               <IoIosArrowForward style={{ color: "#1C1B1F" }} />
-              
-
               <span
                 style={{
                   fontFamily: "Poppins",
@@ -87,8 +85,6 @@ const Table = () => {
                 className="font-medium">
                 Direct Visitors
               </span>
-              
-           
             </h1>
 
             <div className="flex flex-row items-center justify-start">
@@ -115,215 +111,218 @@ const Table = () => {
           </div>
           <div className="outer-wrapper">
             <div className="table-wrapper">
-              {data.length !== 0 ? <table
-                className="min-w-full bg-white"
-                style={{ boxShadow: " 0px 0px 4px 0px #00000040" }}>
-                <thead>
-                  <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
-                    <th
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "left",
-                        paddingLeft: "7px",
-                        width: "115px",
-                        padding: "5px",
-                      }}>
-                      Date
-                    </th>
-                    <th
-                      className="text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                      }}>
-                      Response Time
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                      }}>
-                      Meeting Duration
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                      }}>
-                      Customer Name
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                      }}>
-                      Customer ID
-                    </th>
-                    <th
-                      className="border-b"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                      }}>
-                      Mobile No
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                      }}>
-                      Email ID
-                    </th>
-                    <th
-                      className="border-b"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        padding: "5px",
-                      }}>
-                      Project
-                    </th>
-                    <th
-                      className="border-b text-center"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "center",
-                        width: "100px",
-                        padding: "5px",
-                      }}>
-                      Attendant
-                    </th>
-                    <th
-                      className="border-b"
-                      style={{
-                        fontFamily: "Manrope",
-                        fontSize: "12px",
-                        fontWeight: "500",
-                        lineHeight: "16.39px",
-                        textAlign: "left",
-                        padding: "5px",
-                      }}>
-                      Actions
-                    </th>
-                    {/* <th className="py-2 px-2 lg:px-6 border-b"> </th> */}
-                  </tr>
-                </thead>
+              {data.length !== 0 ? (
+                <table
+                  className="min-w-full bg-white"
+                  style={{ boxShadow: " 0px 0px 4px 0px #00000040" }}>
+                  <thead>
+                    <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
+                      <th
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "left",
+                          paddingLeft: "7px",
+                          width: "115px",
+                          padding: "5px",
+                        }}>
+                        Date
+                      </th>
+                      <th
+                        className="text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                        }}>
+                        Response Time
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                        }}>
+                        Meeting Duration
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                        }}>
+                        Customer Name
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                        }}>
+                        Customer ID
+                      </th>
+                      <th
+                        className="border-b"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                        }}>
+                        Mobile No
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                        }}>
+                        Email ID
+                      </th>
+                      <th
+                        className="border-b"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          padding: "5px",
+                        }}>
+                        Project
+                      </th>
+                      <th
+                        className="border-b text-center"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "center",
+                          width: "100px",
+                          padding: "5px",
+                        }}>
+                        Attendant
+                      </th>
+                      <th
+                        className="border-b"
+                        style={{
+                          fontFamily: "Manrope",
+                          fontSize: "12px",
+                          fontWeight: "500",
+                          lineHeight: "16.39px",
+                          textAlign: "left",
+                          padding: "5px",
+                        }}>
+                        Actions
+                      </th>
+                      {/* <th className="py-2 px-2 lg:px-6 border-b"> </th> */}
+                    </tr>
+                  </thead>
 
-                <tbody>
-                  {data
-                    .filter(({ name }) =>
-                      name.toLowerCase().includes(valueinput.toLowerCase())
-                    )
-                    .map((visitor, index) => (
-                      <tr
-                        style={{ paddingLeft: "5px" }}
-                        className="py-1 border-b text-[9px] lg:text-[14px]"
-                        key={index}>
-                        <td style={{ paddingLeft: "5px" }}>
-                          {DateupdatedAt(visitor.updatedAt)}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {ResponseAt(visitor.updatedAt)}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          00:00
-                          {/* {visitor.name}   */}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.name}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          <Link
-                            style={{
-                              fontFamily: "Manrope",
-                              fontSize: "14px",
-                              fontWeight: "700",
-                              lineHeight: "19.12px",
-                              textAlign: "left",
-                              color: "#000AFF",
-                              textDecoration: "underline",
-                            }}>
-                            {visitor.customerId}
-                          </Link>
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.mobile}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.email}
-                        </td>
-                        <td className="py-1 border-b text-center">
-                          {visitor.projectName}
-                        </td>
+                  <tbody>
+                    {data
+                      .filter(({ name }) =>
+                        name.toLowerCase().includes(valueinput.toLowerCase())
+                      )
+                      .map((visitor, index) => (
+                        <tr
+                          style={{ paddingLeft: "5px" }}
+                          className="py-1 border-b text-[9px] lg:text-[14px]"
+                          key={index}>
+                          <td style={{ paddingLeft: "5px" }}>
+                            {DateupdatedAt(visitor.updatedAt)}
+                          </td>
+                          <td className="py-1 border-b text-center">
+                            {ResponseAt(visitor.updatedAt)}
+                          </td>
+                          <td className="py-1 border-b text-center">
+                            {visitor.timeDuration}
+                          </td>
+                          <td className="py-1 border-b text-center">
+                            {visitor.name}
+                          </td>
+                          <td className="py-1 border-b text-center">
+                            <Link
+                              to={`/Direct_Visitors/${visitor.customerId}`}
+                              style={{
+                                fontFamily: "Manrope",
+                                fontSize: "14px",
+                                fontWeight: "700",
+                                lineHeight: "19.12px",
+                                textAlign: "left",
+                                color: "#000AFF",
+                                textDecoration: "underline",
+                              }}>
+                              {visitor.customerId}
+                            </Link>
+                          </td>
+                          <td className="py-1 border-b text-center">
+                            {visitor.mobile}
+                          </td>
+                          <td className="py-1 border-b text-center">
+                            {visitor.email}
+                          </td>
+                          <td className="py-1 border-b text-center">
+                            {visitor.projectName}
+                          </td>
 
-                        <td className="py-1 border-b text-center text-center">
-                          {visitor.attendantName}
-                        </td>
+                          <td className="py-1 border-b text-center text-center">
+                            {visitor.attendantName}
+                          </td>
 
-                        <td className="py-1 border-b flex gap-2">
-                        <Link to="/Edit">
+                          <td className="py-1 border-b flex gap-2">
+                            <Link to={`/Direct_Visitors/${visitor.customerId}`}>
+                              <PiNotePencilBold
+                                // onClick={() => handleEdit(visitor._id)}
+                                style={{
+                                  cursor: "pointer",
+                                  fontSize: "18px",
+                                  color: "#632E04",
+                                }}
+                              />
+                            </Link>
 
-                          <PiNotePencilBold
-                            onClick={() => handleEdit(visitor._id)}
-                            style={{
-                              cursor: "pointer",
-                              fontSize: "18px",
-                              color: "#632E04",
-                            }}
-                          />
-                       
-
-                    </Link>
-
-                          <RiDeleteBin6Line
-                            onClick={() => deletedAt(visitor._id, visitor.customerId)}
-                            style={{
-                              cursor: "pointer",
-                              fontSize: "18px",
-                              color: "#930000",
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table> : <p> No records founds...!</p>}
+                            <RiDeleteBin6Line
+                              onClick={() =>
+                                deletedAt(visitor._id, visitor.customerId)
+                              }
+                              style={{
+                                cursor: "pointer",
+                                fontSize: "18px",
+                                color: "#930000",
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p> No records founds...!</p>
+              )}
             </div>
           </div>
           {/* <div className="flex justify-end items-center  gap-4">
