@@ -14,7 +14,6 @@ import { LuEye } from "react-icons/lu";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
 
-
 const Table2 = () => {
   const [valueinput, setvalueinput] = useState("");
   const [viewedItems, setViewedItems] = useState([]);
@@ -26,19 +25,20 @@ const Table2 = () => {
   const handleView = (id) => {
     if (viewedItems.includes(id)) {
       // Item already viewed, remove it from viewedItems
-      setViewedItems(prevViewedItems => prevViewedItems.filter(item => item !== id));
+      setViewedItems((prevViewedItems) =>
+        prevViewedItems.filter((item) => item !== id)
+      );
     } else {
       // Item not viewed, add it to viewedItems
-      setViewedItems(prevViewedItems => [...prevViewedItems, id]);
+      setViewedItems((prevViewedItems) => [...prevViewedItems, id]);
     }
-  }
+  };
 
   /*const deletedAt = async (id, customerId) => {
     const confirmDelete = window.confirm(`Do you really want to delete the record with ID ${customerId}?`);
 
     if (confirmDelete) {
       await axios.delete(
-
         `https://project-rof.vercel.app/api/customers/delete/${id}`
       );
       fetchData(); // Refresh data after deletion
@@ -46,12 +46,15 @@ const Table2 = () => {
   };*/
   const getData1 = async () => {
     try {
+      setLoading(true);
       const res = await axios.get(
         `https://project-rof.vercel.app/api/channels`
       );
       setdata(res.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -60,17 +63,14 @@ const Table2 = () => {
     getData1();
   }, []);
 
-
   /*const fetchData = async () => {
     setLoading(true)
     const res = await axios.get(
-     ` https://project-rof.vercel.app/api/customers/fetch-all`
+      ` https://project-rof.vercel.app/api/customers/fetch-all`
     );
     setdata(res.data);
     setLoading(false)
   };*/
-
-
 
   // Data Time
   const DateupdatedAt = (DateupdatedAt) => {
@@ -82,7 +82,6 @@ const Table2 = () => {
     const formattedDate = format(new Date(DateupdatedAt), "hh:mm a");
     return formattedDate;
   };
-
 
   return (
     <div className="arrowss">
@@ -142,14 +141,11 @@ const Table2 = () => {
             </div>
           </div>
           <div className="outer-wrapper">
-            <div className="table-wrapper" style={{ width: '999px' }}>
-              {data.length !== 0 ?
-
+            <div className="table-wrapper" style={{ width: "999px" }}>
+              {data.length !== 0 ? (
                 <table
-
                   className="min-w-full bg-white"
-
-                  style={{ boxShadow: " 0px 0px 4px 0px #00000040", }}>
+                  style={{ boxShadow: " 0px 0px 4px 0px #00000040" }}>
                   <thead>
                     <tr className="text-[9px] lg:text-[15px] text-left  bg-[#E8E8E8]">
                       <th
@@ -175,7 +171,7 @@ const Table2 = () => {
                           lineHeight: "16.39px",
                           textAlign: "center",
                           padding: "5spx",
-                          width: '180px'
+                          width: "180px",
                         }}>
                         {/* Response Time */}
                         Channel ID
@@ -189,8 +185,7 @@ const Table2 = () => {
                           lineHeight: "16.39px",
                           textAlign: "center",
                           padding: "5px",
-                          width: '253px'
-
+                          width: "253px",
                         }}>
                         {/* Meeting Duration */}
                         List of Channel Name
@@ -203,8 +198,7 @@ const Table2 = () => {
                           fontWeight: "500",
                           lineHeight: "16.39px",
                           textAlign: "center",
-                          width: '253px'
-
+                          width: "253px",
                         }}>
                         {/* Customer Name */}Email
                       </th>
@@ -217,8 +211,7 @@ const Table2 = () => {
                           lineHeight: "16.39px",
                           textAlign: "center",
                           padding: "5px",
-                          width: '109px'
-
+                          width: "109px",
                         }}>
                         Phone No
                       </th>
@@ -231,8 +224,7 @@ const Table2 = () => {
                           lineHeight: "16.39px",
                           textAlign: "center",
                           padding: "5px",
-                          width: '170px'
-
+                          width: "170px",
                         }}>
                         Address
                       </th>
@@ -245,14 +237,8 @@ const Table2 = () => {
                           lineHeight: "16.39px",
                           textAlign: "center",
                           padding: "5px",
-                          width: '65px'
-
-                        }}>
-
-                      </th>
-
-
-
+                          width: "65px",
+                        }}></th>
                     </tr>
                   </thead>
 
@@ -274,7 +260,6 @@ const Table2 = () => {
                             </td>
                           </td>
 
-
                           <td className="py-3 border-b text-center">
                             {/* {ResponseAt(visitor.updatedAt)} */}
                             <Link
@@ -291,16 +276,16 @@ const Table2 = () => {
                             </Link>
                           </td>
 
-
-
                           <Link to="/overseas">
                             <td className="py-3  text-center flex items-center justify-center">
                               <FaCircle className="mr-2 text-gray-500 " />
-                              <span >{visitor.name} </span>
+                              <span>{visitor.name} </span>
                             </td>
                           </Link>
 
-
+                          <td className="  py-3 border-b text-center">
+                            454/Big wig, Civil Lines
+                          </td>
 
                           <td className=" py-3 border-b text-center  ">
                             {visitor.email}
@@ -312,44 +297,29 @@ const Table2 = () => {
 
                           <td className="  py-3 border-b text-center">
                             {visitor.address}
-
-
                           </td>
 
-
-
-
-
-
-
                           <td className="py-3 text-center px-3">
-
-
-                            < LuEye
+                            <LuEye
                               onClick={() => handleView(visitor._id)}
                               style={{
                                 cursor: "pointer",
                                 fontSize: "18px",
                                 color: "#00000",
-
                               }}
                             />
                             {/* {viewedItems.includes(visitor._id) && <span className=""><LuEyeOff /></span>} */}
-
-
-
-
                           </td>
                         </tr>
                       ))}
                   </tbody>
-                </table> : <p> No records founds...!</p>}
+                </table>
+              ) : (
+                <p> No records founds...!</p>
+              )}
             </div>
           </div>
-
-
         </div>
-
       )}
     </div>
   );
