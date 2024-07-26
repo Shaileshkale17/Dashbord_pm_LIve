@@ -3,14 +3,11 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Table from "./components/Table/Table.jsx";
 import Overview from "./components/Overview/Overview.jsx";
 import ErrorComp from "./components/ERROR/ErrorComp.jsx";
-import Direct_Visitors from "./pages/Direct_Visitors/Direct_Visitors.jsx";
-import Channel_Visitors from "./pages/Channel_Visitors/Channel_Visitors.jsx";
-import Channel_Partners from "./pages/Channel_Partners/Channel_Partners.jsx";
-import Project from "./pages/Project/Project.jsx";
-import Team from "./pages/Team/Team.jsx";
+import Clients from "./pages/Clients/Clients.jsx";
+import Notes from "./pages/Notes/Notes.jsx";
+import OverviewPage from "./components/Table/OverviewPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +15,10 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorComp />,
     children: [
-      { path: "/", element: <Overview /> },
-      { path: "/Direct_Visitors", element: <Direct_Visitors /> },
-      { path: "/Channel_Visitors", element: <Channel_Visitors /> },
-      { path: "/Channel_Partners", element: <Channel_Partners /> },
-      { path: "/Project", element: <Project /> },
-      { path: "/Team", element: <Team /> },
+      { path: "/", element: <OverviewPage /> },
+      { path: "/Client", element: <Clients/> },
+      { path: "/Notes", element: <Notes /> },
+     
     ],
   },
 ]);

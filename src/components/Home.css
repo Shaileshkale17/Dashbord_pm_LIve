@@ -39,3 +39,24 @@ div input::placeholder{
     font-size: 16px;
     font-family: Manrope;
 }
+
+
+.wrapperT{
+  max-height: 419px !important;
+  overflow-y: scroll;
+}
+
+th{
+  position: sticky;
+}
+
+.wrapperD{
+  max-height: 110px !important;
+  overflow-y: scroll;
+}
+
+.fab All{
+  border-radius: 10px 0px 0px 10px;
+}
+
+

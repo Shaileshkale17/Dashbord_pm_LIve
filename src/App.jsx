@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import TopNavber from "./components/TopNavber/TopNavber";
 import Navber from "./components/Navber/Navber";
-import Table from "./components/Table/Table";
+import Table from "./components/Table/ClientDetail";
 import { Outlet } from "react-router-dom";
 
 function App() {
