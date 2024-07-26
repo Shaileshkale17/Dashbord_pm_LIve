@@ -13,15 +13,16 @@ import info3 from '../../assets/eos-icons_admin-outlined.png';
 import '../Home.css';
 
 const TabBar = ({ activeTab, setActiveTab }) => (
-  <div className="flex mb-4 justify-center fab">
+  
+    <div className="flex justify-center mb-4  fab " >
     {["All", "Client", "Manger", "Super Admin"].map((tab) => (
       <button
         key={tab}
-        style={{ borderRadius: "24px 0px 0px 24px", borderRadius: "0px",fontFamily:'Manrope', }}
-        className={` px-4 py-2 ${
+        style={{ fontFamily:'Manrope', padding:'10px 10px', width:'121px'}}
+        className={`  ${
           activeTab === tab
-            ? "bg-[#3D2314] text-white"
-            : "bg-white text-[#3D2314]"
+            ? "bg-[#3D2314] text-white rounded-l-[24px]"
+            : "bg-white text-[#3D2314] "
         }`}
         onClick={() => setActiveTab(tab)}
       >
@@ -29,7 +30,9 @@ const TabBar = ({ activeTab, setActiveTab }) => (
       </button>
     ))}
       
-  </div>
+
+    </div>
+  
 );
 
 function NotesDetails() {
@@ -107,7 +110,7 @@ opacity: '0px',
       <br />
       <TabBar activeTab={activeTab} setActiveTab={setActiveTab} />
       <br />
-      <div className="Cards gap-4 flex flex-wrap px-7 cardT">
+      <div className="Cards gap-4 flex flex-wrap px-[55px] cardT">
         
           <div className="flex flex-wrap gap-10 ">
             <div className=" bg-white rounded-lg shadow-md p-4 w-[287px]">
@@ -118,7 +121,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify" ,fontFamily:'Manrope',}}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Anand Jaiswal
                   </h2>
@@ -161,7 +164,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Ramesh Kulkarni
                   </h2>
@@ -201,7 +204,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Manager
                   </h2>
@@ -241,7 +244,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Superadmin
                     
@@ -284,7 +287,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Sharukh
                   </h2>
@@ -327,7 +330,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Rasika Pandey
                   </h2>
@@ -370,7 +373,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Riyaana Dey
                   </h2>
@@ -413,7 +416,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Prasad Fadnavis
                   </h2>
@@ -460,7 +463,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify" ,fontFamily:'Manrope',}}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Sharukh
                   </h2>
@@ -503,7 +506,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Rasika Pandey
                   </h2>
@@ -546,7 +549,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Riyaana Dey
                   </h2>
@@ -589,7 +592,7 @@ opacity: '0px',
                 <div>
                   <h2
                     style={{ fontWeight: "700", textAlign: "justify",fontFamily:'Manrope', }}
-                    className="text-[14px] text-center text-[#3D2314]"
+                    className="text-[18px] text-center text-[#3D2314]"
                   >
                     Prasad Fadnavis
                   </h2>

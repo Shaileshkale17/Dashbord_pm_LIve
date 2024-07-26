@@ -55,13 +55,27 @@ opacity: '0px',
       <div className="grid grid-cols-3 gap-6 mt-6 w-[1300px] h-[409px]">
         <div className="col-span-2">
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <h2 className="text-lg font-semibold mb-4">Your Performance at a Glance</h2>
-            <div className="flex justify-between  ">
+            <h2 style={{
+              fontFamily: 'Manrope',
+              fontSize: '18px',
+              fontWeight: '600',
+              lineHeight: '24.59px',
+              color:'black'
+              
+            }} className="text-lg font-semibold mb-4 font-[Manrope]">Your Performance at a Glance</h2>
+            <div className="flex justify-between rounded-[12px]">
 
 
 <div className='p-2 w-[241px] h-[140px] text-[18px] font-medium text-[#5C5C5C] shadow-lg rounded-xl flex flex-wrap gap-[90px]'>
   
-  <div>Leads  <br />Generated <div>
+  <div style={{
+              fontFamily: 'Manrope',
+              fontSize: '18px',
+              fontWeight: '500',
+              lineHeight: '24.59px',
+              color:'#5C5C5C'
+              
+            }}>Leads  <br />Generated <div>
     
     <img  className='mt-[20px] ' src={iconone} alt="" /></div>  </div>
 <div className='text-[#3D2314] font-bold text-[34px] font-[Manrope]'>25</div>
@@ -69,7 +83,14 @@ opacity: '0px',
 
 <div  className=' p-2 w-[241px] h-[140px] text-[18px] font-medium text-[#5C5C5C] shadow-lg rounded-xl flex flex-wrap gap-[60px]'>
   
-  <div> Appointments <br />Booked 
+  <div  style={{
+              fontFamily: 'Manrope',
+              fontSize: '18px',
+              fontWeight: '500',
+              lineHeight: '24.59px',
+              color:'#5C5C5C'
+              
+            }}> Appointments <br />Booked 
   
  <div> <img className='mt-[20px]' src={icontwo} alt="" /> </div></div>
 
@@ -78,7 +99,14 @@ opacity: '0px',
 
 <div  className=' p-2 w-[241px] h-[140px] text-[18px] font-medium text-[#5C5C5C] shadow-lg rounded-xl flex flex-wrap gap-[70px]'>
   
-  <div> Deals Closed  
+  <div  style={{
+              fontFamily: 'Manrope',
+              fontSize: '18px',
+              fontWeight: '500',
+              lineHeight: '24.59px',
+              color:'#5C5C5C'
+              
+            }}> Deals Closed  
   
   <div> <img className='mt-[43px]' src={iconthree} alt="" /> </div> </div>
 
@@ -92,7 +120,7 @@ opacity: '0px',
 {/* 
           table code */}
           
-          <div className="bg-white w-[739px] h-[213px] rounded-lg shadow p-6">
+          <div className="bg-white w-[739px] h-[213px] rounded-lg shadow"  style={{padding:'18px 24px', borderRadius:'12px'}}>
           <table className=" bg-white shadow-sm rounded-lg overflow-hidden">
           <thead className="bg-gray"style={{fontSize:"12px",fontWeight:"400",color:"#4B4B4B",fontFamily:"Manrope",height:"36px"}}>
             <tr>
@@ -110,15 +138,15 @@ opacity: '0px',
                      
             </tr>
             {/* Add more rows as needed */}
-            <tr>
+            <tr style={{border:'1px solid #C9C9C9'}}>
               <td className="py-2 px-2" style={{color:"#5C5C5C",fontSize:"18px"}}>26 June | 5:33 PM</td>
-              <td className="py-2 px-2">
+              <td className="py-2 px-2 flex justify-between items-center">
                 <span className="py-1 px-2 rounded" style={{color:"#2B9F21",background:"#B4EBA0", fontSize:"8px",fontWeight:"600",width:"58px", height:"19px"}}>
                 New Client
                 </span> <span style={{color:"#5C5C5C",fontSize:"18px"}}>Kapil Verma</span>
               </td>
               
-              <td style={{color:"#5C5C5C",fontSize:"18px"}}>Project Alayas</td>
+              <td style={{color:"#5C5C5C",fontSize:"18px",textAlign:'center'}}>Project Alayas</td>
              
              
               <td className="py-2 px-4 flex justify-around">
@@ -127,14 +155,14 @@ opacity: '0px',
               </td>
               <td style={{color:"#000000",fontSize:"18px",textAlign:"center",fontFamily:"Manrope",fontWeight:"600"}}>05 : 00</td>
             </tr>
-            <tr>
+            <tr  style={{border:'1px solid #C9C9C9'}}>
               <td className="py-2 px-2"style={{color:"#5C5C5C",fontSize:"18px"}}>26 June | 5:33 PM</td>
-              <td className="py-2 px-4">
-                <span className=" py-1 px-2 rounded" style={{color:"#9E932A",background:"#EBEE5D", fontSize:"8px",fontWeight:"600",width:"58px", height:"19px"}}>
+              <td className="py-2 px-2 flex justify-between items-center">
+                <span className=" py-1 px-2 rounded text-center" style={{color:"#9E932A",background:"#EBEE5D", fontSize:"8px",fontWeight:"600",width:"58px", height:"19px"}}>
                 Existing
                 </span> <span style={{color:"#5C5C5C",fontSize:"18px"}}>Suraj Tiwari</span>
               </td>
-              <td style={{color:"#5C5C5C",fontSize:"18px"}}>Project Alayas</td>
+              <td style={{color:"#5C5C5C",fontSize:"18px", textAlign:'center'}}>Project Alayas</td>
             
               
               <td className="py-2 px-4 flex justify-around">

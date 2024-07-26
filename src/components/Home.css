@@ -50,13 +50,19 @@ th{
   position: sticky;
 }
 
+.cardT{
+  max-height: 700px !important;
+  overflow-y: scroll;
+}
+
 .wrapperD{
   max-height: 110px !important;
   overflow-y: scroll;
 }
 
-.fab All{
+.fab .button tab::All{
   border-radius: 10px 0px 0px 10px;
+  border: 1px solid green;
 }
 
 
