@@ -21,12 +21,17 @@
       width: 785px !important;
     }
   }
+
+  .Cards{
+    max-height: 726px !important;
+    overflow-y: scroll;
+  }
  
-th{
+/* thead{
     position: sticky;
     top: -2px;
     background:  #E8E8E8;
-}
+} */
 
 .table-wrapper{
     max-height: 726px !important;
@@ -38,4 +43,29 @@ div input::placeholder{
     font-weight: 500;
     font-size: 16px;
     font-family: Manrope;
+}
+
+
+
+.wrapperT{
+  max-height: 419px !important;
+  overflow-y: scroll;
+}
+
+th{
+  position: sticky;
+}
+
+.cardT{
+  max-height: 700px !important;
+  overflow-y: scroll;
+}
+
+.wrapperD{
+  max-height: 110px !important;
+  overflow-y: scroll;
+}
+.wrapperF{
+  max-height: 956px !important;
+  overflow-y: scroll;
 }

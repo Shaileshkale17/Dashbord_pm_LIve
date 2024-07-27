@@ -4,17 +4,9 @@ import navicon1 from "../../assets/Vector (2).svg";
 import navicon2 from "../../assets/Vector (2)-2.svg";
 import carbon_customer1 from "../../assets/carbon_customer.svg";
 import carbon_customer2 from "../../assets/carbon_customer - Copy.svg";
-import material1 from "../../assets/material-symbols_real-estate-agent-outline-sharp - Copy.svg";
-import material2 from "../../assets/material-symbols_real-estate-agent-outline-sharp.svg";
-import ChannelPartners1 from "../../assets/Vectors (2).svg";
-import ChannelPartners2 from "../../assets/Vectors (3).svg";
-import Projects1 from "../../assets/ph_buildings-bold - Copy.svg";
-import Projects2 from "../../assets/ph_buildings-bold.svg";
-import Team1 from "../../assets/ri_team-line - Copy.svg";
-import Team2 from "../../assets/ri_team-line.svg";
-import Settings1 from "../../assets/Settings - Copy.svg";
+import material1 from "../../assets/add_notes (white).png";
+import material2 from "../../assets/ri_team-line.png";
 import Settings2 from "../../assets/Settings.svg";
-import Logout1 from "../../assets/Logout Copy.svg";
 import Logout2 from "../../assets/logout.svg";
 import { Link, useLocation } from "react-router-dom";
 
@@ -32,24 +24,15 @@ const Navber = () => {
       case "/":
         setActiveItem("Overview");
         break;
-      case "/Direct_Visitors":
+      case "/Client":
         setActiveItem("Overview");
         break;
-      case "/Channel_Visitors":
-        setActiveItem("ChannelVisitors");
-        break;
-      case "/Channel_Partners":
-        setActiveItem("ChannelPartners");
-        break;
-      case "/Project":
-        setActiveItem("Project");
-        break;
-      case "/Team":
-        setActiveItem("Team");
+      case "/My_Team":
+        setActiveItem("My_Team");
         break;
 
       default:
-        setActiveItem("DirectVisitors");
+        setActiveItem("Client");
         break;
     }
   }, []);
@@ -86,7 +69,7 @@ textAlign: 'left',
               Overview
             </li>
           </Link>
-          <Link to="/Direct_Visitors">
+          <Link to="/Client">
             <li
             style={{fontFamily: 'Manrope',
               fontSize: '20px',
@@ -95,20 +78,20 @@ textAlign: 'left',
               textAlign: 'left',
               }}
               className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
-                activeItem === "DirectVisitors"
+                activeItem === "Client"
                   ? "bg-[#3D2314] text-[#FFFFFF]"
                   : ""
               }`}
-              onClick={() => handleItemClick("DirectVisitors")}>
-              {activeItem === "DirectVisitors" ? (
+              onClick={() => handleItemClick("Client")}>
+              {activeItem === "Client" ? (
                 <img src={carbon_customer1} alt="" />
               ) : (
                 <img src={carbon_customer2} alt="" />
               )}
-              Direct Visitors
+              Client
             </li>
           </Link>
-          <Link to="/Channel_Visitors">
+          <Link to="/My_Team">
             <li
             style={{fontFamily: 'Manrope',
               fontSize: '20px',
@@ -117,79 +100,17 @@ textAlign: 'left',
               textAlign: 'left',
               }}
               className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
-                activeItem === "ChannelVisitors"
+                activeItem === "My_Team"
                   ? "bg-[#3D2314] text-[#FFFFFF]"
                   : ""
               }`}
-              onClick={() => handleItemClick("ChannelVisitors")}>
-              {activeItem === "ChannelVisitors" ? (
+              onClick={() => handleItemClick("My_Team")}>
+              {activeItem === "My_Team" ? (
                 <img src={material1} alt="" />
               ) : (
                 <img src={material2} alt="" />
               )}
-              Channel Visitors
-            </li>
-          </Link>
-          <Link to="/Channel_Partners">
-            <li
-            style={{fontFamily: 'Manrope',
-              fontSize: '19px',
-              fontWeight: '500',
-              lineHeight: '27.32px',
-              textAlign: 'left',
-              }}
-              className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
-                activeItem === "ChannelPartners"
-                  ? "bg-[#3D2314] text-[#FFFFFF]"
-                  : ""
-              }`}
-              onClick={() => handleItemClick("ChannelPartners")}>
-              {activeItem === "ChannelPartners" ? (
-                <img src={ChannelPartners1} alt="" />
-              ) : (
-                <img src={ChannelPartners2} alt="" />
-              )}
-              Channel Partners
-            </li>
-          </Link>
-          <Link to="/Project">
-            <li
-            style={{fontFamily: 'Manrope',
-              fontSize: '20px',
-              fontWeight: '500',
-              lineHeight: '27.32px',
-              textAlign: 'left',
-              }}
-              className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
-                activeItem === "Projects" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-              }`}
-              onClick={() => handleItemClick("Projects")}>
-              {activeItem === "Projects" ? (
-                <img src={Projects1} alt="" />
-              ) : (
-                <img src={Projects2} alt="" />
-              )}
-              Projects
-            </li>
-          </Link>
-          <Link to="/Team">
-            <li
-            style={{fontFamily: 'Manrope',
-              fontSize: '20px',
-              fontWeight: '500',
-              lineHeight: '27.32px',
-              textAlign: 'left',
-              }}
-              className={`text-[#3D2314] cursor-pointer font-medium flex flex-row gap-3 w-auto  lg:w-52 p-2 text-sm lg:text-lg font-[Manrope] ${
-                activeItem === "Team" ? "bg-[#3D2314] text-[#FFFFFF]" : ""
-              }`}
-              onClick={() => handleItemClick("Team")}>
-              {activeItem === "Team" ? (
-                <img src={Team1} alt="Team" />
-              ) : (
-                <img src={Team2} alt="Team" />
-              )}
-              Team
+              My Team
             </li>
           </Link>
         </ul>

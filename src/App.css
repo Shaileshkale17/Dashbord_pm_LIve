@@ -5,3 +5,7 @@
 .right-shadow{
     border-right: 1px solid rgb(28, 22, 22);
 }
+
+body{
+    font-family: Manrope;
+}
